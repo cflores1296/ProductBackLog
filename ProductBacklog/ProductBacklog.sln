@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDesktopClient", "WpfDesktopClient\WpfDesktopClient.csproj", "{10B1CFAB-D993-4CC7-8B9D-90E7A5675B1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiWpfHost", "ApiWpfHost\ApiWpfHost.csproj", "{2C62FC6F-CC53-490F-A34A-4A30F11C4E9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfApi", "WcfApi\WcfApi.csproj", "{33197A9B-4F12-4837-BBF0-1D08C1DA4F56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{10B1CFAB-D993-4CC7-8B9D-90E7A5675B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10B1CFAB-D993-4CC7-8B9D-90E7A5675B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10B1CFAB-D993-4CC7-8B9D-90E7A5675B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C62FC6F-CC53-490F-A34A-4A30F11C4E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C62FC6F-CC53-490F-A34A-4A30F11C4E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C62FC6F-CC53-490F-A34A-4A30F11C4E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C62FC6F-CC53-490F-A34A-4A30F11C4E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33197A9B-4F12-4837-BBF0-1D08C1DA4F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33197A9B-4F12-4837-BBF0-1D08C1DA4F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33197A9B-4F12-4837-BBF0-1D08C1DA4F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33197A9B-4F12-4837-BBF0-1D08C1DA4F56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

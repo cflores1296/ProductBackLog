@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{10B1CFAB-D993-4CC7-8B9D-90E7A5675B1E}</ProjectGuid>
+    <ProjectGuid>{2C62FC6F-CC53-490F-A34A-4A30F11C4E9E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WpfDesktopClient</RootNamespace>
-    <AssemblyName>WpfDesktopClient</AssemblyName>
+    <RootNamespace>ApiWpfHost</RootNamespace>
+    <AssemblyName>ApiWpfHost</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,7 +37,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,15 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BacklogAPIClientBuilder.cs" />
-    <Compile Include="Service References\BacklogApi\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="UsersWindow.xaml.cs">
-      <DependentUpon>UsersWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,10 +68,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UsersWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,49 +92,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\BacklogApi\Backlog.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BacklogApi\Backlog1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BacklogApi\Backlog2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BacklogApi\Backlog3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BacklogApi\BacklogAPI.wsdl" />
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\BacklogApi\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\BacklogApi\Backlog.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\BacklogApi\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\BacklogApi\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\BacklogApi\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <ProjectReference Include="..\WcfApi\WcfApi.csproj">
+      <Project>{33197a9b-4f12-4837-bbf0-1d08c1da4f56}</Project>
+      <Name>WcfApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
