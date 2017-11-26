@@ -15,7 +15,68 @@ namespace WpfDesktopClient.BacklogApi {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.Users")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Gender", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.DataAccessLayer")]
+    [System.SerializableAttribute()]
+    public partial class Gender : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid GenderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid GenderId {
+            get {
+                return this.GenderIdField;
+            }
+            set {
+                if ((this.GenderIdField.Equals(value) != true)) {
+                    this.GenderIdField = value;
+                    this.RaisePropertyChanged("GenderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.DataAccessLayer")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -24,6 +85,9 @@ namespace WpfDesktopClient.BacklogApi {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.Gender GenderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -50,6 +114,19 @@ namespace WpfDesktopClient.BacklogApi {
                 if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
                     this.FirstNameField = value;
                     this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.Gender Gender {
+            get {
+                return this.GenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
+                    this.GenderField = value;
+                    this.RaisePropertyChanged("Gender");
                 }
             }
         }
@@ -92,18 +169,24 @@ namespace WpfDesktopClient.BacklogApi {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/WcfApi")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RemovedUser", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.DataAccessLayer")]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class RemovedUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private System.DateTime DateRemovedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private WpfDesktopClient.BacklogApi.User RemovedByUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid RemovedUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.User UserField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -116,27 +199,717 @@ namespace WpfDesktopClient.BacklogApi {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public System.DateTime DateRemoved {
             get {
-                return this.BoolValueField;
+                return this.DateRemovedField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((this.DateRemovedField.Equals(value) != true)) {
+                    this.DateRemovedField = value;
+                    this.RaisePropertyChanged("DateRemoved");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public WpfDesktopClient.BacklogApi.User RemovedByUser {
             get {
-                return this.StringValueField;
+                return this.RemovedByUserField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.RemovedByUserField, value) != true)) {
+                    this.RemovedByUserField = value;
+                    this.RaisePropertyChanged("RemovedByUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid RemovedUserId {
+            get {
+                return this.RemovedUserIdField;
+            }
+            set {
+                if ((this.RemovedUserIdField.Equals(value) != true)) {
+                    this.RemovedUserIdField = value;
+                    this.RaisePropertyChanged("RemovedUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserLogin", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins")]
+    [System.SerializableAttribute()]
+    public partial class UserLogin : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordHashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.User UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserLoginIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PasswordHash {
+            get {
+                return this.PasswordHashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordHashField, value) != true)) {
+                    this.PasswordHashField = value;
+                    this.RaisePropertyChanged("PasswordHash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserLoginId {
+            get {
+                return this.UserLoginIdField;
+            }
+            set {
+                if ((this.UserLoginIdField.Equals(value) != true)) {
+                    this.UserLoginIdField = value;
+                    this.RaisePropertyChanged("UserLoginId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RemovedUserLogin", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins")]
+    [System.SerializableAttribute()]
+    public partial class RemovedUserLogin : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateRemovedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.User RemovedByUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid RemovedUserLoginIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.UserLogin UserLoginField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateRemoved {
+            get {
+                return this.DateRemovedField;
+            }
+            set {
+                if ((this.DateRemovedField.Equals(value) != true)) {
+                    this.DateRemovedField = value;
+                    this.RaisePropertyChanged("DateRemoved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.User RemovedByUser {
+            get {
+                return this.RemovedByUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemovedByUserField, value) != true)) {
+                    this.RemovedByUserField = value;
+                    this.RaisePropertyChanged("RemovedByUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid RemovedUserLoginId {
+            get {
+                return this.RemovedUserLoginIdField;
+            }
+            set {
+                if ((this.RemovedUserLoginIdField.Equals(value) != true)) {
+                    this.RemovedUserLoginIdField = value;
+                    this.RaisePropertyChanged("RemovedUserLoginId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.UserLogin UserLogin {
+            get {
+                return this.UserLoginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserLoginField, value) != true)) {
+                    this.UserLoginField = value;
+                    this.RaisePropertyChanged("UserLogin");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AccessRight", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights")]
+    [System.SerializableAttribute()]
+    public partial class AccessRight : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid AccessRightIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid AccessRightId {
+            get {
+                return this.AccessRightIdField;
+            }
+            set {
+                if ((this.AccessRightIdField.Equals(value) != true)) {
+                    this.AccessRightIdField = value;
+                    this.RaisePropertyChanged("AccessRightId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RemovedAccessRight", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights")]
+    [System.SerializableAttribute()]
+    public partial class RemovedAccessRight : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.AccessRight AccessRightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateRemovedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid RemovedAccessRightIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.User RemovedByUserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.AccessRight AccessRight {
+            get {
+                return this.AccessRightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccessRightField, value) != true)) {
+                    this.AccessRightField = value;
+                    this.RaisePropertyChanged("AccessRight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateRemoved {
+            get {
+                return this.DateRemovedField;
+            }
+            set {
+                if ((this.DateRemovedField.Equals(value) != true)) {
+                    this.DateRemovedField = value;
+                    this.RaisePropertyChanged("DateRemoved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid RemovedAccessRightId {
+            get {
+                return this.RemovedAccessRightIdField;
+            }
+            set {
+                if ((this.RemovedAccessRightIdField.Equals(value) != true)) {
+                    this.RemovedAccessRightIdField = value;
+                    this.RaisePropertyChanged("RemovedAccessRightId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.User RemovedByUser {
+            get {
+                return this.RemovedByUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemovedByUserField, value) != true)) {
+                    this.RemovedByUserField = value;
+                    this.RaisePropertyChanged("RemovedByUser");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserAccessRight", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights")]
+    [System.SerializableAttribute()]
+    public partial class UserAccessRight : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.AccessRight AccessRightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.User UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserAccessRightIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.AccessRight AccessRight {
+            get {
+                return this.AccessRightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccessRightField, value) != true)) {
+                    this.AccessRightField = value;
+                    this.RaisePropertyChanged("AccessRight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserAccessRightId {
+            get {
+                return this.UserAccessRightIdField;
+            }
+            set {
+                if ((this.UserAccessRightIdField.Equals(value) != true)) {
+                    this.UserAccessRightIdField = value;
+                    this.RaisePropertyChanged("UserAccessRightId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RemovedUserAccessRight", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights")]
+    [System.SerializableAttribute()]
+    public partial class RemovedUserAccessRight : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateRemovedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.User RemovedByUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid RemovedUserAccessRightIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.UserAccessRight UserAccessRightField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateRemoved {
+            get {
+                return this.DateRemovedField;
+            }
+            set {
+                if ((this.DateRemovedField.Equals(value) != true)) {
+                    this.DateRemovedField = value;
+                    this.RaisePropertyChanged("DateRemoved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.User RemovedByUser {
+            get {
+                return this.RemovedByUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemovedByUserField, value) != true)) {
+                    this.RemovedByUserField = value;
+                    this.RaisePropertyChanged("RemovedByUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid RemovedUserAccessRightId {
+            get {
+                return this.RemovedUserAccessRightIdField;
+            }
+            set {
+                if ((this.RemovedUserAccessRightIdField.Equals(value) != true)) {
+                    this.RemovedUserAccessRightIdField = value;
+                    this.RaisePropertyChanged("RemovedUserAccessRightId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.UserAccessRight UserAccessRight {
+            get {
+                return this.UserAccessRightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAccessRightField, value) != true)) {
+                    this.UserAccessRightField = value;
+                    this.RaisePropertyChanged("UserAccessRight");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.Customers")]
+    [System.SerializableAttribute()]
+    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid CustomerIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid CustomerId {
+            get {
+                return this.CustomerIdField;
+            }
+            set {
+                if ((this.CustomerIdField.Equals(value) != true)) {
+                    this.CustomerIdField = value;
+                    this.RaisePropertyChanged("CustomerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RemovedCustomer", Namespace="http://schemas.datacontract.org/2004/07/WcfApi.Customers")]
+    [System.SerializableAttribute()]
+    public partial class RemovedCustomer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.Customer CustomerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateRemovedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDesktopClient.BacklogApi.User RemovedByUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid RemovedCustomerIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.Customer Customer {
+            get {
+                return this.CustomerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerField, value) != true)) {
+                    this.CustomerField = value;
+                    this.RaisePropertyChanged("Customer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateRemoved {
+            get {
+                return this.DateRemovedField;
+            }
+            set {
+                if ((this.DateRemovedField.Equals(value) != true)) {
+                    this.DateRemovedField = value;
+                    this.RaisePropertyChanged("DateRemoved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDesktopClient.BacklogApi.User RemovedByUser {
+            get {
+                return this.RemovedByUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemovedByUserField, value) != true)) {
+                    this.RemovedByUserField = value;
+                    this.RaisePropertyChanged("RemovedByUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid RemovedCustomerId {
+            get {
+                return this.RemovedCustomerIdField;
+            }
+            set {
+                if ((this.RemovedCustomerIdField.Equals(value) != true)) {
+                    this.RemovedCustomerIdField = value;
+                    this.RaisePropertyChanged("RemovedCustomerId");
                 }
             }
         }
@@ -155,23 +928,239 @@ namespace WpfDesktopClient.BacklogApi {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BacklogApi.IBackLogAPI")]
     public interface IBackLogAPI {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllGenders", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllGendersResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Gender> GetAllGenders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllGenders", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllGendersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Gender>> GetAllGendersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetGender", ReplyAction="http://tempuri.org/IBackLogAPI/GetGenderResponse")]
+        WpfDesktopClient.BacklogApi.Gender GetGender(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetGender", ReplyAction="http://tempuri.org/IBackLogAPI/GetGenderResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.Gender> GetGenderAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddUser", ReplyAction="http://tempuri.org/IBackLogAPI/AddUserResponse")]
+        WpfDesktopClient.BacklogApi.User AddUser(WpfDesktopClient.BacklogApi.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddUser", ReplyAction="http://tempuri.org/IBackLogAPI/AddUserResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.User> AddUserAsync(WpfDesktopClient.BacklogApi.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateUser", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateUserResponse")]
+        WpfDesktopClient.BacklogApi.User UpdateUser(WpfDesktopClient.BacklogApi.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateUser", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateUserResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.User> UpdateUserAsync(WpfDesktopClient.BacklogApi.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveUser", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveUserResponse")]
+        WpfDesktopClient.BacklogApi.RemovedUser RemoveUser(WpfDesktopClient.BacklogApi.RemovedUser removedUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveUser", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveUserResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedUser> RemoveUserAsync(WpfDesktopClient.BacklogApi.RemovedUser removedUser);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllUsers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllUsersResponse")]
         System.Collections.Generic.List<WpfDesktopClient.BacklogApi.User> GetAllUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllUsers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllUsersResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.User>> GetAllUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetData", ReplyAction="http://tempuri.org/IBackLogAPI/GetDataResponse")]
-        string GetData(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveUsers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveUsersResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.User> GetAllActiveUsers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetData", ReplyAction="http://tempuri.org/IBackLogAPI/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveUsers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveUsersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.User>> GetAllActiveUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IBackLogAPI/GetDataUsingDataContractResponse")]
-        WpfDesktopClient.BacklogApi.CompositeType GetDataUsingDataContract(WpfDesktopClient.BacklogApi.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUsers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUsersResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUser> GetAllRemovedUsers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IBackLogAPI/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.CompositeType> GetDataUsingDataContractAsync(WpfDesktopClient.BacklogApi.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUsers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUsersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUser>> GetAllRemovedUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/FindUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/FindUserLoginResponse")]
+        WpfDesktopClient.BacklogApi.UserLogin FindUserLogin(string userId, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/FindUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/FindUserLoginResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserLogin> FindUserLoginAsync(string userId, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllUserLoginsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetAllUserLogins();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllUserLoginsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetAllUserLoginsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUserLoginsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin> GetAllRemovedUserLogins();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUserLoginsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin>> GetAllRemovedUserLoginsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveUserLoginsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetAllActiveUserLogins();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveUserLoginsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetAllActiveUserLoginsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetUserLoginsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetUserLogins(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetUserLoginsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetUserLoginsAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetRemovedUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetRemovedUserLoginsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin> GetRemovedUserLogins(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetRemovedUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetRemovedUserLoginsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin>> GetRemovedUserLoginsAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetActiveUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetActiveUserLoginsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetActiveUserLogins(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetActiveUserLogins", ReplyAction="http://tempuri.org/IBackLogAPI/GetActiveUserLoginsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetActiveUserLoginsAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/AddUserLoginResponse")]
+        WpfDesktopClient.BacklogApi.UserLogin AddUserLogin(WpfDesktopClient.BacklogApi.UserLogin userLogin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/AddUserLoginResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserLogin> AddUserLoginAsync(WpfDesktopClient.BacklogApi.UserLogin userLogin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateUserLoginResponse")]
+        WpfDesktopClient.BacklogApi.UserLogin UpdateUserLogin(WpfDesktopClient.BacklogApi.UserLogin userLogin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateUserLoginResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserLogin> UpdateUserLoginAsync(WpfDesktopClient.BacklogApi.UserLogin userLogin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveUserLoginResponse")]
+        WpfDesktopClient.BacklogApi.RemovedUserLogin RemoveUserLogin(WpfDesktopClient.BacklogApi.RemovedUserLogin removedUserLogin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveUserLogin", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveUserLoginResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedUserLogin> RemoveUserLoginAsync(WpfDesktopClient.BacklogApi.RemovedUserLogin removedUserLogin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight> GetAllAccessRights();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight>> GetAllAccessRightsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedAccessRight> GetAllRemovedAccessRights();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedAccessRight>> GetAllRemovedAccessRightsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight> GetAllActiveAccessRights();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight>> GetAllActiveAccessRightsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/AddAccessRightResponse")]
+        WpfDesktopClient.BacklogApi.AccessRight AddAccessRight(WpfDesktopClient.BacklogApi.AccessRight accessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/AddAccessRightResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.AccessRight> AddAccessRightAsync(WpfDesktopClient.BacklogApi.AccessRight accessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateAccessRightResponse")]
+        WpfDesktopClient.BacklogApi.AccessRight UpdateAccessRight(WpfDesktopClient.BacklogApi.AccessRight accessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateAccessRightResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.AccessRight> UpdateAccessRightAsync(WpfDesktopClient.BacklogApi.AccessRight accessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveAccessRightResponse")]
+        WpfDesktopClient.BacklogApi.RemovedAccessRight RemoveAccessRight(WpfDesktopClient.BacklogApi.RemovedAccessRight removedAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveAccessRightResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedAccessRight> RemoveAccessRightAsync(WpfDesktopClient.BacklogApi.RemovedAccessRight removedAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllUserAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetAllUserAccessRights();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllUserAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetAllUserAccessRightsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUserAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight> GetAllRemovedUserAccessRights();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUserAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight>> GetAllRemovedUserAccessRightsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveUserAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetAllActiveUserAccessRights();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveUserAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetAllActiveUserAccessRightsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetUserAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetUserAccessRights(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetUserAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetUserAccessRightsAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetRemovedUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetRemovedUserAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight> GetRemovedUserAccessRights(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetRemovedUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetRemovedUserAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight>> GetRemovedUserAccessRightsAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetActiveUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetActiveUserAccessRightsResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetActiveUserAccessRights(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetActiveUserAccessRights", ReplyAction="http://tempuri.org/IBackLogAPI/GetActiveUserAccessRightsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetActiveUserAccessRightsAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddUserAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/AddUserAccessRightResponse")]
+        WpfDesktopClient.BacklogApi.UserAccessRight AddUserAccessRight(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddUserAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/AddUserAccessRightResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserAccessRight> AddUserAccessRightAsync(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateUserAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateUserAccessRightResponse")]
+        WpfDesktopClient.BacklogApi.UserAccessRight UpdateUserAccessRight(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateUserAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateUserAccessRightResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserAccessRight> UpdateUserAccessRightAsync(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveUserAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveUserAccessRightResponse")]
+        WpfDesktopClient.BacklogApi.RemovedUserAccessRight RemoveUserAccessRight(WpfDesktopClient.BacklogApi.RemovedUserAccessRight removedUserAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveUserAccessRight", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveUserAccessRightResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedUserAccessRight> RemoveUserAccessRightAsync(WpfDesktopClient.BacklogApi.RemovedUserAccessRight removedUserAccessRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddCustomer", ReplyAction="http://tempuri.org/IBackLogAPI/AddCustomerResponse")]
+        WpfDesktopClient.BacklogApi.Customer AddCustomer(WpfDesktopClient.BacklogApi.Customer customer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/AddCustomer", ReplyAction="http://tempuri.org/IBackLogAPI/AddCustomerResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.Customer> AddCustomerAsync(WpfDesktopClient.BacklogApi.Customer customer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateCustomer", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateCustomerResponse")]
+        WpfDesktopClient.BacklogApi.Customer UpdateCustomer(WpfDesktopClient.BacklogApi.Customer customer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/UpdateCustomer", ReplyAction="http://tempuri.org/IBackLogAPI/UpdateCustomerResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.Customer> UpdateCustomerAsync(WpfDesktopClient.BacklogApi.Customer customer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveCustomer", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveCustomerResponse")]
+        WpfDesktopClient.BacklogApi.RemovedCustomer RemoveCustomer(WpfDesktopClient.BacklogApi.RemovedCustomer removedCustomer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/RemoveCustomer", ReplyAction="http://tempuri.org/IBackLogAPI/RemoveCustomerResponse")]
+        System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedCustomer> RemoveCustomerAsync(WpfDesktopClient.BacklogApi.RemovedCustomer removedCustomer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllCustomers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllCustomersResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer> GetAllCustomers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllCustomers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllCustomersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer>> GetAllCustomersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveCustomers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveCustomersResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer> GetAllActiveCustomers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllActiveCustomers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllActiveCustomersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer>> GetAllActiveCustomersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedCustomers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedCustomersResponse")]
+        System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedCustomer> GetAllRemovedCustomers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBackLogAPI/GetAllRemovedCustomers", ReplyAction="http://tempuri.org/IBackLogAPI/GetAllRemovedCustomersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedCustomer>> GetAllRemovedCustomersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -201,6 +1190,46 @@ namespace WpfDesktopClient.BacklogApi {
                 base(binding, remoteAddress) {
         }
         
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Gender> GetAllGenders() {
+            return base.Channel.GetAllGenders();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Gender>> GetAllGendersAsync() {
+            return base.Channel.GetAllGendersAsync();
+        }
+        
+        public WpfDesktopClient.BacklogApi.Gender GetGender(string name) {
+            return base.Channel.GetGender(name);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.Gender> GetGenderAsync(string name) {
+            return base.Channel.GetGenderAsync(name);
+        }
+        
+        public WpfDesktopClient.BacklogApi.User AddUser(WpfDesktopClient.BacklogApi.User user) {
+            return base.Channel.AddUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.User> AddUserAsync(WpfDesktopClient.BacklogApi.User user) {
+            return base.Channel.AddUserAsync(user);
+        }
+        
+        public WpfDesktopClient.BacklogApi.User UpdateUser(WpfDesktopClient.BacklogApi.User user) {
+            return base.Channel.UpdateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.User> UpdateUserAsync(WpfDesktopClient.BacklogApi.User user) {
+            return base.Channel.UpdateUserAsync(user);
+        }
+        
+        public WpfDesktopClient.BacklogApi.RemovedUser RemoveUser(WpfDesktopClient.BacklogApi.RemovedUser removedUser) {
+            return base.Channel.RemoveUser(removedUser);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedUser> RemoveUserAsync(WpfDesktopClient.BacklogApi.RemovedUser removedUser) {
+            return base.Channel.RemoveUserAsync(removedUser);
+        }
+        
         public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.User> GetAllUsers() {
             return base.Channel.GetAllUsers();
         }
@@ -209,20 +1238,268 @@ namespace WpfDesktopClient.BacklogApi {
             return base.Channel.GetAllUsersAsync();
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.User> GetAllActiveUsers() {
+            return base.Channel.GetAllActiveUsers();
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.User>> GetAllActiveUsersAsync() {
+            return base.Channel.GetAllActiveUsersAsync();
         }
         
-        public WpfDesktopClient.BacklogApi.CompositeType GetDataUsingDataContract(WpfDesktopClient.BacklogApi.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUser> GetAllRemovedUsers() {
+            return base.Channel.GetAllRemovedUsers();
         }
         
-        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.CompositeType> GetDataUsingDataContractAsync(WpfDesktopClient.BacklogApi.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUser>> GetAllRemovedUsersAsync() {
+            return base.Channel.GetAllRemovedUsersAsync();
+        }
+        
+        public WpfDesktopClient.BacklogApi.UserLogin FindUserLogin(string userId, string password) {
+            return base.Channel.FindUserLogin(userId, password);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserLogin> FindUserLoginAsync(string userId, string password) {
+            return base.Channel.FindUserLoginAsync(userId, password);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetAllUserLogins() {
+            return base.Channel.GetAllUserLogins();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetAllUserLoginsAsync() {
+            return base.Channel.GetAllUserLoginsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin> GetAllRemovedUserLogins() {
+            return base.Channel.GetAllRemovedUserLogins();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin>> GetAllRemovedUserLoginsAsync() {
+            return base.Channel.GetAllRemovedUserLoginsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetAllActiveUserLogins() {
+            return base.Channel.GetAllActiveUserLogins();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetAllActiveUserLoginsAsync() {
+            return base.Channel.GetAllActiveUserLoginsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetUserLogins(System.Guid userId) {
+            return base.Channel.GetUserLogins(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetUserLoginsAsync(System.Guid userId) {
+            return base.Channel.GetUserLoginsAsync(userId);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin> GetRemovedUserLogins(System.Guid userId) {
+            return base.Channel.GetRemovedUserLogins(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserLogin>> GetRemovedUserLoginsAsync(System.Guid userId) {
+            return base.Channel.GetRemovedUserLoginsAsync(userId);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin> GetActiveUserLogins(System.Guid userId) {
+            return base.Channel.GetActiveUserLogins(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserLogin>> GetActiveUserLoginsAsync(System.Guid userId) {
+            return base.Channel.GetActiveUserLoginsAsync(userId);
+        }
+        
+        public WpfDesktopClient.BacklogApi.UserLogin AddUserLogin(WpfDesktopClient.BacklogApi.UserLogin userLogin) {
+            return base.Channel.AddUserLogin(userLogin);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserLogin> AddUserLoginAsync(WpfDesktopClient.BacklogApi.UserLogin userLogin) {
+            return base.Channel.AddUserLoginAsync(userLogin);
+        }
+        
+        public WpfDesktopClient.BacklogApi.UserLogin UpdateUserLogin(WpfDesktopClient.BacklogApi.UserLogin userLogin) {
+            return base.Channel.UpdateUserLogin(userLogin);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserLogin> UpdateUserLoginAsync(WpfDesktopClient.BacklogApi.UserLogin userLogin) {
+            return base.Channel.UpdateUserLoginAsync(userLogin);
+        }
+        
+        public WpfDesktopClient.BacklogApi.RemovedUserLogin RemoveUserLogin(WpfDesktopClient.BacklogApi.RemovedUserLogin removedUserLogin) {
+            return base.Channel.RemoveUserLogin(removedUserLogin);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedUserLogin> RemoveUserLoginAsync(WpfDesktopClient.BacklogApi.RemovedUserLogin removedUserLogin) {
+            return base.Channel.RemoveUserLoginAsync(removedUserLogin);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight> GetAllAccessRights() {
+            return base.Channel.GetAllAccessRights();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight>> GetAllAccessRightsAsync() {
+            return base.Channel.GetAllAccessRightsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedAccessRight> GetAllRemovedAccessRights() {
+            return base.Channel.GetAllRemovedAccessRights();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedAccessRight>> GetAllRemovedAccessRightsAsync() {
+            return base.Channel.GetAllRemovedAccessRightsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight> GetAllActiveAccessRights() {
+            return base.Channel.GetAllActiveAccessRights();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.AccessRight>> GetAllActiveAccessRightsAsync() {
+            return base.Channel.GetAllActiveAccessRightsAsync();
+        }
+        
+        public WpfDesktopClient.BacklogApi.AccessRight AddAccessRight(WpfDesktopClient.BacklogApi.AccessRight accessRight) {
+            return base.Channel.AddAccessRight(accessRight);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.AccessRight> AddAccessRightAsync(WpfDesktopClient.BacklogApi.AccessRight accessRight) {
+            return base.Channel.AddAccessRightAsync(accessRight);
+        }
+        
+        public WpfDesktopClient.BacklogApi.AccessRight UpdateAccessRight(WpfDesktopClient.BacklogApi.AccessRight accessRight) {
+            return base.Channel.UpdateAccessRight(accessRight);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.AccessRight> UpdateAccessRightAsync(WpfDesktopClient.BacklogApi.AccessRight accessRight) {
+            return base.Channel.UpdateAccessRightAsync(accessRight);
+        }
+        
+        public WpfDesktopClient.BacklogApi.RemovedAccessRight RemoveAccessRight(WpfDesktopClient.BacklogApi.RemovedAccessRight removedAccessRight) {
+            return base.Channel.RemoveAccessRight(removedAccessRight);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedAccessRight> RemoveAccessRightAsync(WpfDesktopClient.BacklogApi.RemovedAccessRight removedAccessRight) {
+            return base.Channel.RemoveAccessRightAsync(removedAccessRight);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetAllUserAccessRights() {
+            return base.Channel.GetAllUserAccessRights();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetAllUserAccessRightsAsync() {
+            return base.Channel.GetAllUserAccessRightsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight> GetAllRemovedUserAccessRights() {
+            return base.Channel.GetAllRemovedUserAccessRights();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight>> GetAllRemovedUserAccessRightsAsync() {
+            return base.Channel.GetAllRemovedUserAccessRightsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetAllActiveUserAccessRights() {
+            return base.Channel.GetAllActiveUserAccessRights();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetAllActiveUserAccessRightsAsync() {
+            return base.Channel.GetAllActiveUserAccessRightsAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetUserAccessRights(System.Guid userId) {
+            return base.Channel.GetUserAccessRights(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetUserAccessRightsAsync(System.Guid userId) {
+            return base.Channel.GetUserAccessRightsAsync(userId);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight> GetRemovedUserAccessRights(System.Guid userId) {
+            return base.Channel.GetRemovedUserAccessRights(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedUserAccessRight>> GetRemovedUserAccessRightsAsync(System.Guid userId) {
+            return base.Channel.GetRemovedUserAccessRightsAsync(userId);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight> GetActiveUserAccessRights(System.Guid userId) {
+            return base.Channel.GetActiveUserAccessRights(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.UserAccessRight>> GetActiveUserAccessRightsAsync(System.Guid userId) {
+            return base.Channel.GetActiveUserAccessRightsAsync(userId);
+        }
+        
+        public WpfDesktopClient.BacklogApi.UserAccessRight AddUserAccessRight(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight) {
+            return base.Channel.AddUserAccessRight(userAccessRight);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserAccessRight> AddUserAccessRightAsync(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight) {
+            return base.Channel.AddUserAccessRightAsync(userAccessRight);
+        }
+        
+        public WpfDesktopClient.BacklogApi.UserAccessRight UpdateUserAccessRight(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight) {
+            return base.Channel.UpdateUserAccessRight(userAccessRight);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.UserAccessRight> UpdateUserAccessRightAsync(WpfDesktopClient.BacklogApi.UserAccessRight userAccessRight) {
+            return base.Channel.UpdateUserAccessRightAsync(userAccessRight);
+        }
+        
+        public WpfDesktopClient.BacklogApi.RemovedUserAccessRight RemoveUserAccessRight(WpfDesktopClient.BacklogApi.RemovedUserAccessRight removedUserAccessRight) {
+            return base.Channel.RemoveUserAccessRight(removedUserAccessRight);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedUserAccessRight> RemoveUserAccessRightAsync(WpfDesktopClient.BacklogApi.RemovedUserAccessRight removedUserAccessRight) {
+            return base.Channel.RemoveUserAccessRightAsync(removedUserAccessRight);
+        }
+        
+        public WpfDesktopClient.BacklogApi.Customer AddCustomer(WpfDesktopClient.BacklogApi.Customer customer) {
+            return base.Channel.AddCustomer(customer);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.Customer> AddCustomerAsync(WpfDesktopClient.BacklogApi.Customer customer) {
+            return base.Channel.AddCustomerAsync(customer);
+        }
+        
+        public WpfDesktopClient.BacklogApi.Customer UpdateCustomer(WpfDesktopClient.BacklogApi.Customer customer) {
+            return base.Channel.UpdateCustomer(customer);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.Customer> UpdateCustomerAsync(WpfDesktopClient.BacklogApi.Customer customer) {
+            return base.Channel.UpdateCustomerAsync(customer);
+        }
+        
+        public WpfDesktopClient.BacklogApi.RemovedCustomer RemoveCustomer(WpfDesktopClient.BacklogApi.RemovedCustomer removedCustomer) {
+            return base.Channel.RemoveCustomer(removedCustomer);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDesktopClient.BacklogApi.RemovedCustomer> RemoveCustomerAsync(WpfDesktopClient.BacklogApi.RemovedCustomer removedCustomer) {
+            return base.Channel.RemoveCustomerAsync(removedCustomer);
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer> GetAllCustomers() {
+            return base.Channel.GetAllCustomers();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer>> GetAllCustomersAsync() {
+            return base.Channel.GetAllCustomersAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer> GetAllActiveCustomers() {
+            return base.Channel.GetAllActiveCustomers();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.Customer>> GetAllActiveCustomersAsync() {
+            return base.Channel.GetAllActiveCustomersAsync();
+        }
+        
+        public System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedCustomer> GetAllRemovedCustomers() {
+            return base.Channel.GetAllRemovedCustomers();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WpfDesktopClient.BacklogApi.RemovedCustomer>> GetAllRemovedCustomersAsync() {
+            return base.Channel.GetAllRemovedCustomersAsync();
         }
     }
 }

@@ -29,7 +29,9 @@
     <MetadataFile FileName="Backlog1.xsd" MetadataType="Schema" ID="071fb26a-2b7b-403e-91dc-35694c70c46d" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd0" />
     <MetadataFile FileName="Backlog2.xsd" MetadataType="Schema" ID="8d610c35-e3e3-4b38-8284-0b11f0dcf51c" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd1" />
     <MetadataFile FileName="Backlog.xsd" MetadataType="Schema" ID="da9dca7a-17cf-40a3-8438-fcd89d789b9b" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd2" />
-    <MetadataFile FileName="Backlog3.xsd" MetadataType="Schema" ID="c8b2c55c-ad59-4287-bc01-33559757eb4d" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd3" />
+    <MetadataFile FileName="Backlog3.xsd" MetadataType="Schema" ID="0507be35-a644-48ae-89f1-1892b29ce954" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd3" />
+    <MetadataFile FileName="Backlog31.xsd" MetadataType="Schema" ID="0971a085-a675-4d32-ba3d-ce163e5fef5a" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd4" />
+    <MetadataFile FileName="Backlog4.xsd" MetadataType="Schema" ID="6b03eec7-fd13-4c10-a9aa-11af92bf8b81" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

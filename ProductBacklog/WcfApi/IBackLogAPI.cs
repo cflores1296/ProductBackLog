@@ -4,47 +4,163 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfApi.AccessRights;
+using WcfApi.Customers;
+using WcfApi.DataAccessLayer;
+using WcfApi.UserLogins;
 using WcfApi.Users;
 
 namespace WcfApi
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IBackLogAPI" in both code and config file together.
     [ServiceContract]
     public interface IBackLogAPI
     {
+        // Genders
+        [OperationContract]
+        List<Gender> GetAllGenders();
+
+        [OperationContract]
+        Gender GetGender(string name);
+
+
+
+
+
+        // Users
+        [OperationContract]
+        User AddUser(User user);
+        [OperationContract]
+        User UpdateUser(User user);
+
+        [OperationContract]
+        RemovedUser RemoveUser(RemovedUser removedUser);
+
         [OperationContract]
         List<User> GetAllUsers();
 
+        [OperationContract]
+        List<User> GetAllActiveUsers();
 
         [OperationContract]
-        string GetData(int value);
+        List<RemovedUser> GetAllRemovedUsers();
+
+
+
+
+
+
+        // User Logins
+
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        UserLogin FindUserLogin(string userId, string password);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        List<UserLogin> GetAllUserLogins();
+
+        [OperationContract]
+        List<RemovedUserLogin> GetAllRemovedUserLogins();
+
+        [OperationContract]
+        List<UserLogin> GetAllActiveUserLogins();
+
+        [OperationContract]
+        List<UserLogin> GetUserLogins(Guid userId);
+
+        [OperationContract]
+        List<RemovedUserLogin> GetRemovedUserLogins(Guid userId);
+
+        [OperationContract]
+        List<UserLogin> GetActiveUserLogins(Guid userId);
+
+        [OperationContract]
+        UserLogin AddUserLogin(UserLogin userLogin);
+
+        [OperationContract]
+        UserLogin UpdateUserLogin(UserLogin userLogin);
+
+        [OperationContract]
+        RemovedUserLogin RemoveUserLogin(RemovedUserLogin removedUserLogin);
+
+
+
+
+
+        // Access Rights
+        [OperationContract]
+        List<AccessRight> GetAllAccessRights();
+
+        [OperationContract]
+        List<RemovedAccessRight> GetAllRemovedAccessRights();
+
+        [OperationContract]
+        List<AccessRight> GetAllActiveAccessRights();
+
+        [OperationContract]
+        AccessRight AddAccessRight(AccessRight accessRight);
+
+        [OperationContract]
+        AccessRight UpdateAccessRight(AccessRight accessRight);
+
+        [OperationContract]
+        RemovedAccessRight RemoveAccessRight(RemovedAccessRight removedAccessRight);
+
+
+
+
+
+        // User Access Rights
+        [OperationContract]
+        List<UserAccessRight> GetAllUserAccessRights();
+
+        [OperationContract]
+        List<RemovedUserAccessRight> GetAllRemovedUserAccessRights();
+
+        [OperationContract]
+        List<UserAccessRight> GetAllActiveUserAccessRights();
+
+        [OperationContract]
+        List<UserAccessRight> GetUserAccessRights(Guid userId);
+
+        [OperationContract]
+        List<RemovedUserAccessRight> GetRemovedUserAccessRights(Guid userId);
+
+        [OperationContract]
+        List<UserAccessRight> GetActiveUserAccessRights(Guid userId);
+
+        [OperationContract]
+        UserAccessRight AddUserAccessRight(UserAccessRight userAccessRight);
+
+        [OperationContract]
+        UserAccessRight UpdateUserAccessRight(UserAccessRight userAccessRight);
+
+        [OperationContract]
+        RemovedUserAccessRight RemoveUserAccessRight(RemovedUserAccessRight removedUserAccessRight);
+
+
+
+
+
+
+        // Customers
+        [OperationContract]
+        Customer AddCustomer(Customer customer);
+        [OperationContract]
+        Customer UpdateCustomer(Customer customer);
+
+        [OperationContract]
+        RemovedCustomer RemoveCustomer(RemovedCustomer removedCustomer);
+
+        [OperationContract]
+        List<Customer> GetAllCustomers();
+
+        [OperationContract]
+        List<Customer> GetAllActiveCustomers();
+
+        [OperationContract]
+        List<RemovedCustomer> GetAllRemovedCustomers();
+
     }
 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "WcfApi.ContractType".
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
 
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
-    }
 }

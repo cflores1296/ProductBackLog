@@ -13,7 +13,6 @@ namespace WpfDesktopClient
         public static Task<BackLogAPIClient> GetBackLogAPIClientAsync()
         {
             return Task.Run(() => {
-                //Thread.Sleep(2000);
                 return new BackLogAPIClient();
             });
         }

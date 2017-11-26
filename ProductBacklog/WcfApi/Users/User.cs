@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-using WcfApi.DataAccessLayer;
 
-namespace WcfApi.Users
+namespace WcfApi.DataAccessLayer
 {
     [DataContract]
     public class User
@@ -15,9 +15,10 @@ namespace WcfApi.Users
 
         public User(DbUser dbUser)
         {
-            UserId = dbUser.UserId;
+            UserId = dbUser.DbUserId;
             FirstName = dbUser.FirstName;
             LastName = dbUser.LastName;
+            Gender = new Gender(dbUser.DbGender);
         }
 
         [DataMember]
@@ -29,7 +30,7 @@ namespace WcfApi.Users
         [DataMember]
         public string LastName { set; get; }
 
+        [DataMember]
+        public Gender Gender { set; get; }
     }
-
-
 }

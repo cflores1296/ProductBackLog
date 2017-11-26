@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfDesktopClient.BacklogApi;
+using WpfDesktopClient.Customers;
+using WpfDesktopClient.Login;
+using WpfDesktopClient.Users;
 
 namespace WpfDesktopClient
 {
@@ -27,28 +31,22 @@ namespace WpfDesktopClient
             InitializeComponent();
         }
 
-        //private async void button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    messageTextBlock.Text = "In progress...";
-        //    var client = await GetBackLogAPIClientAsync();
-        //    var message = await client.GetDataAsync(DateTime.Now.Second);
-        //    messageTextBlock.Text = message;
-        //}
-
-
-        private async void button_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var usersWindows = new UsersWindow();
-            usersWindows.ShowDialog();
-        }
+            var loginWindow = new LoginWindow();
+            loginWindow.Owner = this;
+            loginWindow.ShowDialog();
 
-
-        Task<BackLogAPIClient> GetBackLogAPIClientAsync()
-        {
-            return Task.Run(() => {
-                Thread.Sleep(3000);
-                return new BackLogAPIClient();
-            });
+            if (loginWindow.LoginWasSuccessfull)
+            {
+                Title = AppGlobals.UserThatIsLoggedin.FirstName + " " + AppGlobals.UserThatIsLoggedin.FirstName;
+                userGrid.Children.Add(new UsersControl(this));
+                customersGrid.Children.Add(new CustomersControl(this));
+            }
+            else
+            {
+                Close();
+            }
         }
     }
 }

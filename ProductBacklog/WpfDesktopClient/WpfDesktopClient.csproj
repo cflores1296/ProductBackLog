@@ -57,15 +57,54 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AForFindAndReplace.cs" />
+    <Compile Include="AppGlobals.cs" />
     <Compile Include="BacklogAPIClientBuilder.cs" />
+    <Compile Include="Customers\AddCustomerWindow.xaml.cs">
+      <DependentUpon>AddCustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\CustomersControl.xaml.cs">
+      <DependentUpon>CustomersControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\CustomerView.cs" />
+    <Compile Include="Login\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\BacklogApi\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UsersWindow.xaml.cs">
-      <DependentUpon>UsersWindow.xaml</DependentUpon>
+    <Compile Include="UserAccessRights\AccessRightView.cs" />
+    <Compile Include="UserAccessRights\SelectAccessRightsControl.xaml.cs">
+      <DependentUpon>SelectAccessRightsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserAccessRights\SelectAccessRightWindow.xaml.cs">
+      <DependentUpon>SelectAccessRightWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccessRights\AddAccessRightWindow.xaml.cs">
+      <DependentUpon>AddAccessRightWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\GenderView.cs" />
+    <Compile Include="Users\UsersControl.xaml.cs">
+      <DependentUpon>UsersControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserView.cs" />
+    <Page Include="Customers\AddCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customers\CustomersControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,7 +117,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UsersWindow.xaml">
+    <Page Include="UserAccessRights\SelectAccessRightsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserAccessRights\SelectAccessRightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserAccessRights\AddAccessRightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\UsersControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,11 +173,44 @@
     <None Include="Service References\BacklogApi\Backlog3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\BacklogApi\Backlog31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BacklogApi\Backlog4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\BacklogApi\BacklogAPI.wsdl" />
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.CompositeType.datasource">
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.AccessRight.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.Gender.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedAccessRight.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedCustomer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedUserAccessRight.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedUserLogin.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.UserAccessRight.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.UserLogin.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
