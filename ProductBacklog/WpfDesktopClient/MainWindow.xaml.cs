@@ -18,20 +18,28 @@ using WpfDesktopClient.BacklogApi;
 using WpfDesktopClient.Customers;
 using WpfDesktopClient.Login;
 using WpfDesktopClient.Users;
+using WpfDesktopClient.WorkRequests;
 
 namespace WpfDesktopClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : DevExpress.Xpf.Core.ThemedWindow
     {
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Task.Delay(500);
+
+            ShowLoginWindow();
+        }
+
+        void ShowLoginWindow()
         {
             var loginWindow = new LoginWindow();
             loginWindow.Owner = this;
@@ -39,9 +47,10 @@ namespace WpfDesktopClient
 
             if (loginWindow.LoginWasSuccessfull)
             {
-                Title = AppGlobals.UserThatIsLoggedin.FirstName + " " + AppGlobals.UserThatIsLoggedin.FirstName;
+                Title = AppGlobals.UserThatIsLoggedin.FirstName + " " + AppGlobals.UserThatIsLoggedin.LastName;
                 userGrid.Children.Add(new UsersControl(this));
                 customersGrid.Children.Add(new CustomersControl(this));
+                workRequestsGrid.Children.Add(new WorkRequestsControl(this));
             }
             else
             {

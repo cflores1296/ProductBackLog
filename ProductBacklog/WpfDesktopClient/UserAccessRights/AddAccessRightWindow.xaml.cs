@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WcfApi.AccessRights;
 using WpfDesktopClient.BacklogApi;
 
 namespace WpfDesktopClient.UserAccessRights
@@ -18,7 +19,7 @@ namespace WpfDesktopClient.UserAccessRights
     /// <summary>
     /// Interaction logic for AddAccessRightWindow.xaml
     /// </summary>
-    public partial class AddAccessRightWindow : Window
+    public partial class AddAccessRightWindow : DevExpress.Xpf.Core.ThemedWindow
     {
         public bool AccessRightWasAdded { set; get; }
         public AccessRight AccessRight { set; get; }

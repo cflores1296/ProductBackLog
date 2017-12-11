@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WcfApi.Users;
 using WpfDesktopClient.BacklogApi;
+using WpfDesktopClient.PushNotifications;
 
 namespace WpfDesktopClient.Users
 {
@@ -29,19 +31,24 @@ namespace WpfDesktopClient.Users
         {
             InitializeComponent();
             this.owner = owner;
+            this.Loaded += UserControl_Loaded;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Loaded -= UserControl_Loaded;
+
             dataGrid.ItemsSource = Users;
             RefreshUsersList();
+
+            BacklogNotifications.UserWasAddedPushNotification += OnUserWasAddedPushNotification;
+            BacklogNotifications.UserWasUpdatedPushNotification += OnUserWasUpdatedPushNotification;
+            BacklogNotifications.UserWasRemovedPushNotification += OnUserWasRemovedPushNotification;
         }
         
 
 
-
-
-
+        
         private void addUserButton_Click(object sender, RoutedEventArgs e)
         {
             var addUserWindow = new AddUserWindow();
@@ -58,9 +65,18 @@ namespace WpfDesktopClient.Users
         {
             if (dataGrid.SelectedItem != null)
             {
-                var user = dataGrid.SelectedItem as User;
+                var userView = dataGrid.SelectedItem as UserView;
 
+                var user = userView.user;
 
+                var editUserWindow = new EditUserWindow(user);
+                editUserWindow.Owner = owner;
+                editUserWindow.ShowDialog();
+
+                if (editUserWindow.UserWasUpdated)
+                {
+                    RefreshUsersList();
+                }
             }
         }
 
@@ -109,21 +125,21 @@ namespace WpfDesktopClient.Users
         async void RefreshUsersList()
         {
             progressBar.Visibility = Visibility.Visible;
+
             try
             {
                 Users.Clear();
                 var client = await BacklogAPIClientBuilder.GetBackLogAPIClientAsync();
-                var allUsers = await client.GetAllUsersAsync();
+                var allUsers = await client.GetAllActiveUsersAsync();
 
                 foreach (var user in allUsers)
                 {
-                    Users.Add(new UserView(user));
+                    Add(user);
                 }
 
-                dataGrid.ItemsSource = null;
-                dataGrid.ItemsSource = Users;
+                dataGrid.RefreshData();
             }
-            catch (Exception)
+            catch
             {
                 
             }
@@ -131,5 +147,92 @@ namespace WpfDesktopClient.Users
             progressBar.Visibility = Visibility.Collapsed;
             
         }
+
+
+
+
+
+
+        void Add(User user)
+        {
+            Users.Add(new UserView(user));
+        }
+
+        void Update(User user)
+        {
+            var userView = Users.FirstOrDefault(c => c.user.UserId == user.UserId);
+
+            if (userView != null)
+            {
+                userView.user = user;
+                dataGrid.RefreshData();
+            }
+        }
+
+        void Remove(User user)
+        {
+            var userView = Users.FirstOrDefault(c => c.user.UserId == user.UserId);
+
+            if (userView != null)
+            {
+                Users.Remove(userView);
+            }
+        }
+
+
+        public void OnUserWasAddedPushNotification(Guid userId)
+        {
+            Dispatcher.Invoke(new Action(async () => {
+                try
+                {
+                    var client = await BacklogAPIClientBuilder.GetBackLogAPIClientAsync();
+                    var user = await client.GetUserAsync(userId);
+                    Add(user);
+                    dataGrid.RefreshData();
+                }
+                catch
+                {
+                }
+
+            }));
+        }
+
+        public void OnUserWasUpdatedPushNotification(Guid userId)
+        {
+            Dispatcher.Invoke(new Action(async () => {
+                try
+                {
+                    var client = await BacklogAPIClientBuilder.GetBackLogAPIClientAsync();
+                    var user = await client.GetUserAsync(userId);
+
+                    Update(user);
+                    dataGrid.RefreshData();
+                }
+                catch
+                {
+                }
+            }));
+        }
+
+        public void OnUserWasRemovedPushNotification(Guid removedUserId)
+        {
+            Dispatcher.Invoke(new Action(async () => {
+                try
+                {
+                    var client = await BacklogAPIClientBuilder.GetBackLogAPIClientAsync();
+
+                    var removedUser = await client.GetRemovedUserAsync(removedUserId);
+
+                    Remove(removedUser.User);
+                    dataGrid.RefreshData();
+                }
+                catch
+                {
+                }
+
+            }));
+        }
+
+
     }
 }

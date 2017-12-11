@@ -1,0 +1,869 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Genders" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Users" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Customers" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.WorkTypes" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.WorkStatuses" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.SoftwareTypes" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" />
+  <xs:element name="SubscribeToNotifications">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnSubscribeFromNotificaitons">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllGenders">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllGendersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfApi.Genders" minOccurs="0" name="GetAllGendersResult" nillable="true" type="q1:ArrayOfGender" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindGender">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindGenderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfApi.Genders" minOccurs="0" name="FindGenderResult" nillable="true" type="q2:Gender" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="user" nillable="true" type="q3:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="AddUserResult" nillable="true" type="q4:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="user" nillable="true" type="q5:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="UpdateUserResult" nillable="true" type="q6:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="removedUser" nillable="true" type="q7:RemovedUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="RemoveUserResult" nillable="true" type="q8:RemovedUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q9:ArrayOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="GetAllActiveUsersResult" nillable="true" type="q10:ArrayOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="GetAllRemovedUsersResult" nillable="true" type="q11:ArrayOfRemovedUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q12:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="GetUserResult" nillable="true" type="q13:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="removedUserId" type="q14:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="GetRemovedUserResult" nillable="true" type="q15:RemovedUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUserLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUserLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="FindUserLoginResult" nillable="true" type="q16:UserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUserLogins">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUserLoginsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="GetAllUserLoginsResult" nillable="true" type="q17:ArrayOfUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedUserLogins">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedUserLoginsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="GetAllRemovedUserLoginsResult" nillable="true" type="q18:ArrayOfRemovedUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveUserLogins">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveUserLoginsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="GetAllActiveUserLoginsResult" nillable="true" type="q19:ArrayOfUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserLogins">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q20:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserLoginsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="GetUserLoginsResult" nillable="true" type="q21:ArrayOfUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedUserLogins">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q22:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedUserLoginsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="GetRemovedUserLoginsResult" nillable="true" type="q23:ArrayOfRemovedUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveUserLogins">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q24:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveUserLoginsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="GetActiveUserLoginsResult" nillable="true" type="q25:ArrayOfUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userLoginId" type="q26:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="GetUserLoginResult" nillable="true" type="q27:UserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="userLogin" nillable="true" type="q28:UserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="AddUserLoginResult" nillable="true" type="q29:UserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="userLogin" nillable="true" type="q30:UserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="UpdateUserLoginResult" nillable="true" type="q31:UserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="removedUserLogin" nillable="true" type="q32:RemovedUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" minOccurs="0" name="RemoveUserLoginResult" nillable="true" type="q33:RemovedUserLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAccessRights">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetAllAccessRightsResult" nillable="true" type="q34:ArrayOfAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedAccessRights">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetAllRemovedAccessRightsResult" nillable="true" type="q35:ArrayOfRemovedAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveAccessRights">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetAllActiveAccessRightsResult" nillable="true" type="q36:ArrayOfAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccessRight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="accessRightId" type="q37:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccessRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetAccessRightResult" nillable="true" type="q38:AccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAccessRight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="accessRight" nillable="true" type="q39:AccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAccessRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="AddAccessRightResult" nillable="true" type="q40:AccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccessRight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="accessRight" nillable="true" type="q41:AccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccessRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="UpdateAccessRightResult" nillable="true" type="q42:AccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAccessRight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="removedAccessRight" nillable="true" type="q43:RemovedAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAccessRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="RemoveAccessRightResult" nillable="true" type="q44:RemovedAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUserAccessRights">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUserAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetAllUserAccessRightsResult" nillable="true" type="q45:ArrayOfUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedUserAccessRights">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedUserAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetAllRemovedUserAccessRightsResult" nillable="true" type="q46:ArrayOfRemovedUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveUserAccessRights">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveUserAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetAllActiveUserAccessRightsResult" nillable="true" type="q47:ArrayOfUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserAccessRights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q48:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetUserAccessRightsResult" nillable="true" type="q49:ArrayOfUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedUserAccessRights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q50:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedUserAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetRemovedUserAccessRightsResult" nillable="true" type="q51:ArrayOfRemovedUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveUserAccessRights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q52:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveUserAccessRightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="GetActiveUserAccessRightsResult" nillable="true" type="q53:ArrayOfUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserAccessRight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="userAccessRight" nillable="true" type="q54:UserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserAccessRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="AddUserAccessRightResult" nillable="true" type="q55:UserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserAccessRight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="userAccessRight" nillable="true" type="q56:UserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserAccessRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="UpdateUserAccessRightResult" nillable="true" type="q57:UserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserAccessRight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="removedUserAccessRight" nillable="true" type="q58:RemovedUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserAccessRightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" minOccurs="0" name="RemoveUserAccessRightResult" nillable="true" type="q59:RemovedUserAccessRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="customer" nillable="true" type="q60:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="AddCustomerResult" nillable="true" type="q61:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="customer" nillable="true" type="q62:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="UpdateCustomerResult" nillable="true" type="q63:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="removedCustomer" nillable="true" type="q64:RemovedCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="RemoveCustomerResult" nillable="true" type="q65:RemovedCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCustomers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCustomersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="GetAllCustomersResult" nillable="true" type="q66:ArrayOfCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveCustomers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveCustomersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="GetAllActiveCustomersResult" nillable="true" type="q67:ArrayOfCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedCustomers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedCustomersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="GetAllRemovedCustomersResult" nillable="true" type="q68:ArrayOfRemovedCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="customerId" type="q69:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="GetCustomerResult" nillable="true" type="q70:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="removedCustomerId" type="q71:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/WcfApi.Customers" minOccurs="0" name="GetRemovedCustomerResult" nillable="true" type="q72:RemovedCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllWorkTypes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllWorkTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/WcfApi.WorkTypes" minOccurs="0" name="GetAllWorkTypesResult" nillable="true" type="q73:ArrayOfWorkType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindWorkType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindWorkTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/WcfApi.WorkTypes" minOccurs="0" name="FindWorkTypeResult" nillable="true" type="q74:WorkType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllWorkStatuses">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllWorkStatusesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/WcfApi.WorkStatuses" minOccurs="0" name="GetAllWorkStatusesResult" nillable="true" type="q75:ArrayOfWorkStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindWorkStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindWorkStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/WcfApi.WorkStatuses" minOccurs="0" name="FindWorkStatusResult" nillable="true" type="q76:WorkStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSoftwareTypes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSoftwareTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/WcfApi.SoftwareTypes" minOccurs="0" name="GetAllSoftwareTypesResult" nillable="true" type="q77:ArrayOfSoftwareType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindSoftwareType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindSoftwareTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/WcfApi.SoftwareTypes" minOccurs="0" name="FindSoftwareTypeResult" nillable="true" type="q78:SoftwareType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllWorkRequests">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllWorkRequestsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="GetAllWorkRequestsResult" nillable="true" type="q79:ArrayOfWorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedWorkRequests">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRemovedWorkRequestsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="GetAllRemovedWorkRequestsResult" nillable="true" type="q80:ArrayOfRemovedWorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveWorkRequests">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActiveWorkRequestsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="GetAllActiveWorkRequestsResult" nillable="true" type="q81:ArrayOfWorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="workRequest" nillable="true" type="q82:WorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="AddWorkRequestResult" nillable="true" type="q83:WorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorkRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="workRequest" nillable="true" type="q84:WorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorkRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="UpdateWorkRequestResult" nillable="true" type="q85:WorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveWorkRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="removedWorkRequest" nillable="true" type="q86:RemovedWorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveWorkRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="RemoveWorkRequestResult" nillable="true" type="q87:RemovedWorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="workRequestId" type="q88:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="GetWorkRequestResult" nillable="true" type="q89:WorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedWorkRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="removedWorkRequestId" type="q90:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRemovedWorkRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" minOccurs="0" name="GetRemovedWorkRequestResult" nillable="true" type="q91:RemovedWorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerWasAddedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="customerId" type="q92:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerWasUpdatedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="customerId" type="q93:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerWasRemovedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="removedCustomerId" type="q94:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserWasAddedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q95="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q95:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserWasUpdatedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q96="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q96:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserWasRemovedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q97="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="removedUserId" type="q97:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WorkRequestWasAddedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q98="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="workRequestId" type="q98:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WorkRequestWasUpdatedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q99="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="workRequestId" type="q99:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WorkRequestWasRemovedNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q100="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="removedWorkRequestId" type="q100:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

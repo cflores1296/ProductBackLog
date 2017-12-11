@@ -26,6 +26,20 @@ namespace WcfApi.AccessRights
         }
 
 
+        public AccessRight GetAccessRight(Guid accessRightId)
+        {
+            AccessRight accessRight = null;
+
+            var dbAccessRight = GetDbAccessRight(new DataContext(), accessRightId);
+
+            if (dbAccessRight != null)
+            {
+                accessRight = new AccessRight(dbAccessRight);
+            }
+
+            return accessRight;
+        }
+
         public AccessRight AddAccessRight(AccessRight accessRight)
         {
             var dbContext = new DataContext();
@@ -33,7 +47,7 @@ namespace WcfApi.AccessRights
             dbAccessRight.DbAccessRightId = accessRight.AccessRightId;
             dbAccessRight.Name = accessRight.Name;
 
-            var addedAccessRight = dbContext.DbAccessRights.Add(dbAccessRight);
+            dbAccessRight = dbContext.DbAccessRights.Add(dbAccessRight);
             dbContext.SaveChanges();
 
             return new AccessRight(dbAccessRight);

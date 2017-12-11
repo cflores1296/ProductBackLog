@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WcfApi.AccessRights;
 using WpfDesktopClient.BacklogApi;
 
 namespace WpfDesktopClient.UserAccessRights
@@ -22,13 +23,25 @@ namespace WpfDesktopClient.UserAccessRights
     public partial class SelectAccessRightsControl : UserControl
     {
         Window owner;
-        public List<AccessRight> SelectedAccessRights { set; get; }
+
+        List<AccessRight> selectedAccessRights = new List<AccessRight>();
+        public List<AccessRight> SelectedAccessRights
+        {
+            set
+            {
+                selectedAccessRights = value;
+                RefreshUsersList();
+            }
+            get
+            {
+                return selectedAccessRights;
+            }
+        }
 
         public SelectAccessRightsControl(Window owner)
         {
             InitializeComponent();
             this.owner = owner;
-            SelectedAccessRights = new List<AccessRight>();
         }
 
         

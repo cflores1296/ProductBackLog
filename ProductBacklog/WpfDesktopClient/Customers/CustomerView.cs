@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WcfApi.Customers;
 using WpfDesktopClient.BacklogApi;
 
 namespace WpfDesktopClient.Customers

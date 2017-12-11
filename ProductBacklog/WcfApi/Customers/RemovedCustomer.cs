@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using WcfApi.DataAccessLayer;
+using WcfApi.Users;
 
 namespace WcfApi.Customers
 {

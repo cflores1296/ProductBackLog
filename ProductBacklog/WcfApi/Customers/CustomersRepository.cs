@@ -25,6 +25,21 @@ namespace WcfApi.Customers
             return new DataContext().DbCustomers.Where(customer => customer.DbRemovedCustomer == null).ToList().Select(customer => new Customer(customer)).ToList();
         }
 
+
+        public Customer GetCustomer(Guid customerId)
+        {
+            Customer customer = null;
+
+            var dbCustomer = GetDbCustomer(new DataContext(), customerId);
+
+            if (dbCustomer != null)
+            {
+                customer = new Customer(dbCustomer);
+            }
+
+            return customer;
+        }
+
         public Customer AddCustomer(Customer customer)
         {
             var dbContext = new DataContext();
@@ -32,7 +47,7 @@ namespace WcfApi.Customers
             dbCustomer.DbCustomerId = customer.CustomerId;
             dbCustomer.Name = customer.Name;
 
-            var addedCustomer = dbContext.DbCustomers.Add(dbCustomer);
+            dbCustomer = dbContext.DbCustomers.Add(dbCustomer);
             dbContext.SaveChanges();
 
             return new Customer(dbCustomer);
@@ -72,6 +87,19 @@ namespace WcfApi.Customers
 
 
             return new RemovedCustomer(dbRemovedCustomerFound);
+        }
+
+        public RemovedCustomer GetRemovedCustomer(Guid removedCustomerId)
+        {
+            RemovedCustomer removedCustomer = null;
+            var dbRemovedCustomerFound = new DataContext().DbRemovedCustomers.FirstOrDefault(dbRemovedCustomer => dbRemovedCustomer.DbRemovedCustomerId == removedCustomerId);
+
+            if (dbRemovedCustomerFound != null)
+            {
+                removedCustomer = new RemovedCustomer(dbRemovedCustomerFound);
+            }
+
+            return removedCustomer;
         }
 
 

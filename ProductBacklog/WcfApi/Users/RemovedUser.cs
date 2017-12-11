@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WcfApi.DataAccessLayer;
 
-namespace WcfApi.DataAccessLayer
+namespace WcfApi.Users
 {
     [DataContract]
     public class RemovedUser

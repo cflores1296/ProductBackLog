@@ -76,6 +76,7 @@
     <Compile Include="Customers\CustomersRepository.cs" />
     <Compile Include="Customers\RemovedCustomer.cs" />
     <Compile Include="DataAccessLayer\DbAccessRight.cs" />
+    <Compile Include="DataAccessLayer\DbCurrentRequestNumber.cs" />
     <Compile Include="DataAccessLayer\DbCustomer.cs" />
     <Compile Include="DataAccessLayer\DbRemovedAccessRight.cs" />
     <Compile Include="DataAccessLayer\DbRemovedCustomer.cs" />
@@ -84,11 +85,19 @@
     <Compile Include="DataAccessLayer\DbGender.cs" />
     <Compile Include="DataAccessLayer\DbRemovedUserAccessRight.cs" />
     <Compile Include="DataAccessLayer\DbRemovedUserLogin.cs" />
+    <Compile Include="DataAccessLayer\DbRemovedWorkRequest.cs" />
+    <Compile Include="DataAccessLayer\DbSoftwareType.cs" />
+    <Compile Include="DataAccessLayer\DbUserWorkRequest.cs" />
+    <Compile Include="DataAccessLayer\DbWorkRequestApproval.cs" />
+    <Compile Include="DataAccessLayer\DbWorkStatus.cs" />
+    <Compile Include="DataAccessLayer\DbWorkType.cs" />
     <Compile Include="DataAccessLayer\DbUserAccessRight.cs" />
     <Compile Include="DataAccessLayer\DbUserLogin.cs" />
+    <Compile Include="DataAccessLayer\DbWorkRequest.cs" />
     <Compile Include="Genders\Gender.cs" />
     <Compile Include="Genders\Genders.cs" />
     <Compile Include="IBackLogAPI.cs" />
+    <Compile Include="IBacklogApiPushNotifications.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BackLogAPI.cs" />
@@ -98,12 +107,24 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="PushNotifications\PushNotificationsRepository.cs" />
+    <Compile Include="SoftwareTypes\SoftwareType.cs" />
+    <Compile Include="SoftwareTypes\SoftwareTypesRepository.cs" />
     <Compile Include="UserLogins\RemovedUserLogin.cs" />
     <Compile Include="UserLogins\UserLogin.cs" />
     <Compile Include="UserLogins\UserLoginsRepository.cs" />
     <Compile Include="Users\RemovedUser.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\UsersRepository.cs" />
+    <Compile Include="UserWorkRequests\UserWorkRequestsRepository.cs" />
+    <Compile Include="WorkRequests\RemovedWorkRequest.cs" />
+    <Compile Include="WorkRequests\WorkRequest.cs" />
+    <Compile Include="WorkRequests\WorkRequestNumbersRepository.cs" />
+    <Compile Include="WorkRequests\WorkRequestsRepository.cs" />
+    <Compile Include="WorkStatuses\WorkStatus.cs" />
+    <Compile Include="WorkStatuses\WorkStatusRepository.cs" />
+    <Compile Include="WorkTypes\WorkType.cs" />
+    <Compile Include="WorkTypes\WorkTypesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -115,6 +136,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,22 +1,33 @@
-﻿<Window x:Class="WpfDesktopClient.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfDesktopClient"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowState="Maximized" Loaded="Window_Loaded">
+﻿<dx:ThemedWindow 
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:WpfDesktopClient" 
+    xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar" 
+    xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="WpfDesktopClient.MainWindow" mc:Ignorable="d" Title="Wishlist App" Height="350" Width="525" WindowState="Maximized" Loaded="Window_Loaded" WindowStyle="None" 
+    WindowStartupLocation="CenterScreen">
     <Grid>
-        <TabControl x:Name="tabControl" >
-            <TabItem Header="Wishlist">
-                <Grid Background="#FFE5E5E5"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="tabControl" Grid.Row="1">
+            <TabItem Header="WISHLIST">
+                <Grid x:Name="workRequestsGrid" >
+                    
+                </Grid>
             </TabItem>
-            <TabItem Header="Customers">
-                <Grid Name="customersGrid"/>
+            <TabItem Header="CUSTOMERS">
+                <Grid x:Name="customersGrid" />
             </TabItem>
-            <TabItem Header="Users">
-                <Grid Name="userGrid"/>
+            <TabItem Header="USERS">
+                <Grid x:Name="userGrid" />
             </TabItem>
         </TabControl>
+
     </Grid>
-</Window>
+</dx:ThemedWindow>

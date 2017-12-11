@@ -24,5 +24,11 @@ namespace WcfApi.DataAccessLayer
         public DbSet<DbRemovedUserLogin> DbRemovedUserLogins { get; set; }
         public DbSet<DbCustomer> DbCustomers { get; set; }
         public DbSet<DbRemovedCustomer> DbRemovedCustomers { get; set; }
+        public DbSet<DbWorkType> DbWorkTypes { get; set; }
+        public DbSet<DbWorkStatus> DbWorkStatuses { get; set; }
+        public DbSet<DbSoftwareType> DbSoftwareTypes { get; set; }
+        public DbSet<DbCurrentRequestNumber> DbCurrentRequestNumbers { get; set; }
+        public DbSet<DbWorkRequest> DbWorkRequests { get; set; }
+        public DbSet<DbRemovedWorkRequest> DbRemovedWorkRequests { get; set; }
     }
 }

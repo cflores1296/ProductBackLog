@@ -15,6 +15,6 @@ namespace WcfApi.DataAccessLayer
 
         public string Name { set; get; }
 
-        public virtual ICollection<User> Users { set; get; }
+        public virtual ICollection<DbUser> DbUsers { set; get; }
     }
 }

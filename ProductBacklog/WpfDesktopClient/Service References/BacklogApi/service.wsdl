@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BacklogAPI" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IBackLogAPI_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Genders" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Users" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.UserLogins" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Customers" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.WorkTypes" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.WorkStatuses" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.SoftwareTypes" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.WorkRequests" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBackLogAPI_SubscribeToNotifications_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeToNotifications" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UnSubscribeFromNotificaitons_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnSubscribeFromNotificaitons" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllGenders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGenders" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllGenders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGendersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindGender_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindGender" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindGender_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindGenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUser" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveUsers" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedUsers" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedUser" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindUserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindUserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllUserLogins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserLogins" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllUserLogins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserLoginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedUserLogins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedUserLogins" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedUserLogins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedUserLoginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveUserLogins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveUserLogins" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveUserLogins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveUserLoginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUserLogins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLogins" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUserLogins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLoginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedUserLogins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedUserLogins" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedUserLogins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedUserLoginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetActiveUserLogins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUserLogins" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetActiveUserLogins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUserLoginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddUserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddUserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateUserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateUserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveUserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveUserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAccessRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccessRight" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAccessRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccessRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddAccessRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAccessRight" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddAccessRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAccessRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateAccessRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccessRight" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateAccessRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccessRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveAccessRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAccessRight" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveAccessRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAccessRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllUserAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllUserAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedUserAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedUserAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedUserAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedUserAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveUserAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveUserAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveUserAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveUserAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUserAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetUserAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedUserAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedUserAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedUserAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedUserAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetActiveUserAccessRights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUserAccessRights" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetActiveUserAccessRights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUserAccessRightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddUserAccessRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserAccessRight" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddUserAccessRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserAccessRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateUserAccessRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserAccessRight" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateUserAccessRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserAccessRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveUserAccessRight_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserAccessRight" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveUserAccessRight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserAccessRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomers" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveCustomers" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedCustomers" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllWorkTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllWorkTypes" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllWorkTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllWorkTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindWorkType_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindWorkType" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindWorkType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindWorkTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllWorkStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllWorkStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllWorkStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllWorkStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindWorkStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindWorkStatus" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindWorkStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindWorkStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllSoftwareTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSoftwareTypes" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllSoftwareTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSoftwareTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindSoftwareType_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindSoftwareType" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_FindSoftwareType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindSoftwareTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllWorkRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllWorkRequests" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllWorkRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllWorkRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedWorkRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedWorkRequests" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllRemovedWorkRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRemovedWorkRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveWorkRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveWorkRequests" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetAllActiveWorkRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveWorkRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddWorkRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkRequest" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_AddWorkRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateWorkRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWorkRequest" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UpdateWorkRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWorkRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveWorkRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveWorkRequest" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_RemoveWorkRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveWorkRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetWorkRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkRequest" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetWorkRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedWorkRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedWorkRequest" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_GetRemovedWorkRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRemovedWorkRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_CustomerWasAddedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:CustomerWasAddedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_CustomerWasUpdatedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:CustomerWasUpdatedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_CustomerWasRemovedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:CustomerWasRemovedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UserWasAddedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UserWasAddedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UserWasUpdatedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UserWasUpdatedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_UserWasRemovedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UserWasRemovedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_WorkRequestWasAddedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:WorkRequestWasAddedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_WorkRequestWasUpdatedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:WorkRequestWasUpdatedNotification" />
+  </wsdl:message>
+  <wsdl:message name="IBackLogAPI_WorkRequestWasRemovedNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:WorkRequestWasRemovedNotification" />
+  </wsdl:message>
+  <wsdl:portType name="IBackLogAPI">
+    <wsdl:operation name="SubscribeToNotifications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/SubscribeToNotifications" message="tns:IBackLogAPI_SubscribeToNotifications_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnSubscribeFromNotificaitons">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/UnSubscribeFromNotificaitons" message="tns:IBackLogAPI_UnSubscribeFromNotificaitons_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGenders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllGenders" message="tns:IBackLogAPI_GetAllGenders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllGendersResponse" message="tns:IBackLogAPI_GetAllGenders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindGender">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/FindGender" message="tns:IBackLogAPI_FindGender_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/FindGenderResponse" message="tns:IBackLogAPI_FindGender_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/AddUser" message="tns:IBackLogAPI_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/AddUserResponse" message="tns:IBackLogAPI_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateUser" message="tns:IBackLogAPI_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateUserResponse" message="tns:IBackLogAPI_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveUser" message="tns:IBackLogAPI_RemoveUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveUserResponse" message="tns:IBackLogAPI_RemoveUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllUsers" message="tns:IBackLogAPI_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllUsersResponse" message="tns:IBackLogAPI_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveUsers" message="tns:IBackLogAPI_GetAllActiveUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveUsersResponse" message="tns:IBackLogAPI_GetAllActiveUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUsers" message="tns:IBackLogAPI_GetAllRemovedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUsersResponse" message="tns:IBackLogAPI_GetAllRemovedUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetUser" message="tns:IBackLogAPI_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetUserResponse" message="tns:IBackLogAPI_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedUser" message="tns:IBackLogAPI_GetRemovedUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedUserResponse" message="tns:IBackLogAPI_GetRemovedUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindUserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/FindUserLogin" message="tns:IBackLogAPI_FindUserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/FindUserLoginResponse" message="tns:IBackLogAPI_FindUserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserLogins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllUserLogins" message="tns:IBackLogAPI_GetAllUserLogins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllUserLoginsResponse" message="tns:IBackLogAPI_GetAllUserLogins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedUserLogins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserLogins" message="tns:IBackLogAPI_GetAllRemovedUserLogins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserLoginsResponse" message="tns:IBackLogAPI_GetAllRemovedUserLogins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveUserLogins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserLogins" message="tns:IBackLogAPI_GetAllActiveUserLogins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserLoginsResponse" message="tns:IBackLogAPI_GetAllActiveUserLogins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLogins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetUserLogins" message="tns:IBackLogAPI_GetUserLogins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetUserLoginsResponse" message="tns:IBackLogAPI_GetUserLogins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedUserLogins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedUserLogins" message="tns:IBackLogAPI_GetRemovedUserLogins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedUserLoginsResponse" message="tns:IBackLogAPI_GetRemovedUserLogins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUserLogins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetActiveUserLogins" message="tns:IBackLogAPI_GetActiveUserLogins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetActiveUserLoginsResponse" message="tns:IBackLogAPI_GetActiveUserLogins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetUserLogin" message="tns:IBackLogAPI_GetUserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetUserLoginResponse" message="tns:IBackLogAPI_GetUserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/AddUserLogin" message="tns:IBackLogAPI_AddUserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/AddUserLoginResponse" message="tns:IBackLogAPI_AddUserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateUserLogin" message="tns:IBackLogAPI_UpdateUserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateUserLoginResponse" message="tns:IBackLogAPI_UpdateUserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveUserLogin" message="tns:IBackLogAPI_RemoveUserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveUserLoginResponse" message="tns:IBackLogAPI_RemoveUserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllAccessRights" message="tns:IBackLogAPI_GetAllAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllAccessRightsResponse" message="tns:IBackLogAPI_GetAllAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedAccessRights" message="tns:IBackLogAPI_GetAllRemovedAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedAccessRightsResponse" message="tns:IBackLogAPI_GetAllRemovedAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveAccessRights" message="tns:IBackLogAPI_GetAllActiveAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveAccessRightsResponse" message="tns:IBackLogAPI_GetAllActiveAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccessRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAccessRight" message="tns:IBackLogAPI_GetAccessRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAccessRightResponse" message="tns:IBackLogAPI_GetAccessRight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAccessRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/AddAccessRight" message="tns:IBackLogAPI_AddAccessRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/AddAccessRightResponse" message="tns:IBackLogAPI_AddAccessRight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccessRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateAccessRight" message="tns:IBackLogAPI_UpdateAccessRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateAccessRightResponse" message="tns:IBackLogAPI_UpdateAccessRight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAccessRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveAccessRight" message="tns:IBackLogAPI_RemoveAccessRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveAccessRightResponse" message="tns:IBackLogAPI_RemoveAccessRight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllUserAccessRights" message="tns:IBackLogAPI_GetAllUserAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllUserAccessRightsResponse" message="tns:IBackLogAPI_GetAllUserAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedUserAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserAccessRights" message="tns:IBackLogAPI_GetAllRemovedUserAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedUserAccessRightsResponse" message="tns:IBackLogAPI_GetAllRemovedUserAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveUserAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserAccessRights" message="tns:IBackLogAPI_GetAllActiveUserAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveUserAccessRightsResponse" message="tns:IBackLogAPI_GetAllActiveUserAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetUserAccessRights" message="tns:IBackLogAPI_GetUserAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetUserAccessRightsResponse" message="tns:IBackLogAPI_GetUserAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedUserAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedUserAccessRights" message="tns:IBackLogAPI_GetRemovedUserAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedUserAccessRightsResponse" message="tns:IBackLogAPI_GetRemovedUserAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUserAccessRights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetActiveUserAccessRights" message="tns:IBackLogAPI_GetActiveUserAccessRights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetActiveUserAccessRightsResponse" message="tns:IBackLogAPI_GetActiveUserAccessRights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserAccessRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/AddUserAccessRight" message="tns:IBackLogAPI_AddUserAccessRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/AddUserAccessRightResponse" message="tns:IBackLogAPI_AddUserAccessRight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccessRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateUserAccessRight" message="tns:IBackLogAPI_UpdateUserAccessRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateUserAccessRightResponse" message="tns:IBackLogAPI_UpdateUserAccessRight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserAccessRight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveUserAccessRight" message="tns:IBackLogAPI_RemoveUserAccessRight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveUserAccessRightResponse" message="tns:IBackLogAPI_RemoveUserAccessRight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/AddCustomer" message="tns:IBackLogAPI_AddCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/AddCustomerResponse" message="tns:IBackLogAPI_AddCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateCustomer" message="tns:IBackLogAPI_UpdateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateCustomerResponse" message="tns:IBackLogAPI_UpdateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveCustomer" message="tns:IBackLogAPI_RemoveCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveCustomerResponse" message="tns:IBackLogAPI_RemoveCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllCustomers" message="tns:IBackLogAPI_GetAllCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllCustomersResponse" message="tns:IBackLogAPI_GetAllCustomers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveCustomers" message="tns:IBackLogAPI_GetAllActiveCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveCustomersResponse" message="tns:IBackLogAPI_GetAllActiveCustomers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedCustomers" message="tns:IBackLogAPI_GetAllRemovedCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedCustomersResponse" message="tns:IBackLogAPI_GetAllRemovedCustomers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetCustomer" message="tns:IBackLogAPI_GetCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetCustomerResponse" message="tns:IBackLogAPI_GetCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedCustomer" message="tns:IBackLogAPI_GetRemovedCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedCustomerResponse" message="tns:IBackLogAPI_GetRemovedCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWorkTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllWorkTypes" message="tns:IBackLogAPI_GetAllWorkTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllWorkTypesResponse" message="tns:IBackLogAPI_GetAllWorkTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindWorkType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/FindWorkType" message="tns:IBackLogAPI_FindWorkType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/FindWorkTypeResponse" message="tns:IBackLogAPI_FindWorkType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWorkStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllWorkStatuses" message="tns:IBackLogAPI_GetAllWorkStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllWorkStatusesResponse" message="tns:IBackLogAPI_GetAllWorkStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindWorkStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/FindWorkStatus" message="tns:IBackLogAPI_FindWorkStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/FindWorkStatusResponse" message="tns:IBackLogAPI_FindWorkStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSoftwareTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllSoftwareTypes" message="tns:IBackLogAPI_GetAllSoftwareTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllSoftwareTypesResponse" message="tns:IBackLogAPI_GetAllSoftwareTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSoftwareType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/FindSoftwareType" message="tns:IBackLogAPI_FindSoftwareType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/FindSoftwareTypeResponse" message="tns:IBackLogAPI_FindSoftwareType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWorkRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllWorkRequests" message="tns:IBackLogAPI_GetAllWorkRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllWorkRequestsResponse" message="tns:IBackLogAPI_GetAllWorkRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedWorkRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedWorkRequests" message="tns:IBackLogAPI_GetAllRemovedWorkRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllRemovedWorkRequestsResponse" message="tns:IBackLogAPI_GetAllRemovedWorkRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveWorkRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveWorkRequests" message="tns:IBackLogAPI_GetAllActiveWorkRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetAllActiveWorkRequestsResponse" message="tns:IBackLogAPI_GetAllActiveWorkRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/AddWorkRequest" message="tns:IBackLogAPI_AddWorkRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/AddWorkRequestResponse" message="tns:IBackLogAPI_AddWorkRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateWorkRequest" message="tns:IBackLogAPI_UpdateWorkRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UpdateWorkRequestResponse" message="tns:IBackLogAPI_UpdateWorkRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveWorkRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveWorkRequest" message="tns:IBackLogAPI_RemoveWorkRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/RemoveWorkRequestResponse" message="tns:IBackLogAPI_RemoveWorkRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetWorkRequest" message="tns:IBackLogAPI_GetWorkRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetWorkRequestResponse" message="tns:IBackLogAPI_GetWorkRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedWorkRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedWorkRequest" message="tns:IBackLogAPI_GetRemovedWorkRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/GetRemovedWorkRequestResponse" message="tns:IBackLogAPI_GetRemovedWorkRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerWasAddedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/CustomerWasAddedNotification" message="tns:IBackLogAPI_CustomerWasAddedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerWasUpdatedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/CustomerWasUpdatedNotification" message="tns:IBackLogAPI_CustomerWasUpdatedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerWasRemovedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/CustomerWasRemovedNotification" message="tns:IBackLogAPI_CustomerWasRemovedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserWasAddedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UserWasAddedNotification" message="tns:IBackLogAPI_UserWasAddedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserWasUpdatedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UserWasUpdatedNotification" message="tns:IBackLogAPI_UserWasUpdatedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserWasRemovedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/UserWasRemovedNotification" message="tns:IBackLogAPI_UserWasRemovedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WorkRequestWasAddedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/WorkRequestWasAddedNotification" message="tns:IBackLogAPI_WorkRequestWasAddedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WorkRequestWasUpdatedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/WorkRequestWasUpdatedNotification" message="tns:IBackLogAPI_WorkRequestWasUpdatedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WorkRequestWasRemovedNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBackLogAPI/WorkRequestWasRemovedNotification" message="tns:IBackLogAPI_WorkRequestWasRemovedNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IBackLogAPI" type="tns:IBackLogAPI">
+    <wsp:PolicyReference URI="#NetTcpBinding_IBackLogAPI_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SubscribeToNotifications">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/SubscribeToNotifications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnSubscribeFromNotificaitons">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UnSubscribeFromNotificaitons" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGenders">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllGenders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindGender">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/FindGender" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/RemoveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveUsers">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllActiveUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedUsers">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedUser">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetRemovedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindUserLogin">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/FindUserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserLogins">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllUserLogins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedUserLogins">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUserLogins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveUserLogins">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllActiveUserLogins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLogins">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetUserLogins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedUserLogins">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetRemovedUserLogins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUserLogins">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetActiveUserLogins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLogin">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetUserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserLogin">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/AddUserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserLogin">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UpdateUserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserLogin">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/RemoveUserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllRemovedAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllActiveAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccessRight">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAccessRight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAccessRight">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/AddAccessRight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccessRight">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UpdateAccessRight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAccessRight">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/RemoveAccessRight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllUserAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedUserAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllRemovedUserAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveUserAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllActiveUserAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetUserAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedUserAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetRemovedUserAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUserAccessRights">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetActiveUserAccessRights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserAccessRight">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/AddUserAccessRight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccessRight">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UpdateUserAccessRight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserAccessRight">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/RemoveUserAccessRight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/AddCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UpdateCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCustomer">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/RemoveCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllCustomers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveCustomers">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllActiveCustomers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedCustomers">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllRemovedCustomers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedCustomer">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetRemovedCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWorkTypes">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllWorkTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindWorkType">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/FindWorkType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWorkStatuses">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllWorkStatuses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindWorkStatus">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/FindWorkStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSoftwareTypes">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllSoftwareTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSoftwareType">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/FindSoftwareType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWorkRequests">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllWorkRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRemovedWorkRequests">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllRemovedWorkRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveWorkRequests">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetAllActiveWorkRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkRequest">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/AddWorkRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkRequest">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UpdateWorkRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveWorkRequest">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/RemoveWorkRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkRequest">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetWorkRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemovedWorkRequest">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/GetRemovedWorkRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerWasAddedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/CustomerWasAddedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerWasUpdatedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/CustomerWasUpdatedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerWasRemovedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/CustomerWasRemovedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserWasAddedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UserWasAddedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserWasUpdatedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UserWasUpdatedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserWasRemovedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/UserWasRemovedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkRequestWasAddedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/WorkRequestWasAddedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkRequestWasUpdatedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/WorkRequestWasUpdatedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkRequestWasRemovedNotification">
+      <soap12:operation soapAction="http://tempuri.org/IBackLogAPI/WorkRequestWasRemovedNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BacklogAPI">
+    <wsdl:port name="NetTcpBinding_IBackLogAPI" binding="tns:NetTcpBinding_IBackLogAPI">
+      <soap12:address location="net.tcp://localhost:8080/BacklogAPI/hey" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8080/BacklogAPI/hey</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

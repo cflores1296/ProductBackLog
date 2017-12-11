@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WcfApi.UserLogins;
 using WpfDesktopClient.BacklogApi;
 
 namespace WpfDesktopClient.Login
@@ -18,7 +19,7 @@ namespace WpfDesktopClient.Login
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : DevExpress.Xpf.Core.ThemedWindow
     {
         public bool LoginWasSuccessfull { set; get; }
         public UserLogin UserLogin { set; get; }

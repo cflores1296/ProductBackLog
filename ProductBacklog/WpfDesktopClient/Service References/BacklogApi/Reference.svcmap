@@ -21,17 +21,21 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/Backlog" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8081/BacklogAPI/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Backlog.disco" MetadataType="Disco" ID="1c0ccd0a-164a-40fe-8857-33abcfbc5d2e" SourceId="1" SourceUrl="http://localhost:8080/Backlog?disco" />
-    <MetadataFile FileName="BacklogAPI.wsdl" MetadataType="Wsdl" ID="9f2a4f74-fbac-4e6f-a49d-56c45e6f043b" SourceId="1" SourceUrl="http://localhost:8080/Backlog?wsdl" />
-    <MetadataFile FileName="Backlog1.xsd" MetadataType="Schema" ID="071fb26a-2b7b-403e-91dc-35694c70c46d" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd0" />
-    <MetadataFile FileName="Backlog2.xsd" MetadataType="Schema" ID="8d610c35-e3e3-4b38-8284-0b11f0dcf51c" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd1" />
-    <MetadataFile FileName="Backlog.xsd" MetadataType="Schema" ID="da9dca7a-17cf-40a3-8438-fcd89d789b9b" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd2" />
-    <MetadataFile FileName="Backlog3.xsd" MetadataType="Schema" ID="0507be35-a644-48ae-89f1-1892b29ce954" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd3" />
-    <MetadataFile FileName="Backlog31.xsd" MetadataType="Schema" ID="0971a085-a675-4d32-ba3d-ce163e5fef5a" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd4" />
-    <MetadataFile FileName="Backlog4.xsd" MetadataType="Schema" ID="6b03eec7-fd13-4c10-a9aa-11af92bf8b81" SourceId="1" SourceUrl="http://localhost:8080/Backlog?xsd=xsd5" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9512aea7-81ac-4cec-a3ce-d6648e5690f8" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d73c9fac-5f6e-4bb7-9728-b6b53d7bb22e" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="dbd71a05-fdf6-435c-b116-962ee551630e" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.Genders.xsd" MetadataType="Schema" ID="f8e8b8dd-8f8d-4b86-b2fd-24ad798beced" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.Users.xsd" MetadataType="Schema" ID="cc950ee7-10bf-4e2e-8b0e-720a16d94b78" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.UserLogins.xsd" MetadataType="Schema" ID="a47c8779-2828-4bba-842e-78ab8bbb9552" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.AccessRights.xsd" MetadataType="Schema" ID="71f56c32-b57e-4bf7-bb79-d6fb0ed523fd" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.Customers.xsd" MetadataType="Schema" ID="7f6b25c7-dd3f-4507-afb6-150093f4f07f" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.WorkTypes.xsd" MetadataType="Schema" ID="d37a06b9-1fa2-440b-b67b-11f59b2c33fd" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.WorkStatuses.xsd" MetadataType="Schema" ID="eb80eea7-17d4-4fcf-9461-c26b9446837e" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.SoftwareTypes.xsd" MetadataType="Schema" ID="73f45a74-94bb-4456-8b20-10d98af8ddb4" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
+    <MetadataFile FileName="WcfApi.WorkRequests.xsd" MetadataType="Schema" ID="24f49277-22a2-4e27-8e59-2c82c9f4c39d" SourceId="1" SourceUrl="http://localhost:8081/BacklogAPI/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

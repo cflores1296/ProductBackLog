@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WcfApi.Users" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfApi.Users" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Genders" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfApi.Genders" minOccurs="0" name="Gender" nillable="true" type="q1:Gender" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="RemovedUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateRemoved" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RemovedByUser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="RemovedUserId" type="ser:guid" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemovedUser" nillable="true" type="tns:RemovedUser" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="ArrayOfRemovedUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RemovedUser" nillable="true" type="tns:RemovedUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemovedUser" nillable="true" type="tns:ArrayOfRemovedUser" />
+</xs:schema>

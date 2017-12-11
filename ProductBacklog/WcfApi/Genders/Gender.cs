@@ -5,8 +5,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WcfApi.DataAccessLayer;
 
-namespace WcfApi.DataAccessLayer
+namespace WcfApi.Genders
 {
     [DataContract]
     public class Gender

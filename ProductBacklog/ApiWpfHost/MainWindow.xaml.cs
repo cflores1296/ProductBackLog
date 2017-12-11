@@ -24,7 +24,9 @@ namespace ApiWpfHost
     public partial class MainWindow : Window
     {
         ServiceHost host;
-        Uri baseAddress = new Uri("http://localhost:8080/Backlog");
+        //Uri baseAddress = new Uri("http://localhost:8080/Backlog");
+        Uri baseAddress = new Uri("net.tcp://localhost:8080/Backlog");
+        
 
         public MainWindow()
         {
@@ -51,26 +53,92 @@ namespace ApiWpfHost
 
             Task.Run(() => {
 
-                // Create the ServiceHost.
-                host = new ServiceHost(typeof(BacklogAPI), baseAddress);
-                // Enable metadata publishing.
-                ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-                smb.HttpGetEnabled = true;
-                smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-                host.Description.Behaviors.Add(smb);
-
-                // Open the ServiceHost to start listening for messages. Since
-                // no endpoints are explicitly configured, the runtime will create
-                // one endpoint per base address for each service contract implemented
-                // by the service.
-                host.Open();
-
-
+                //Tcp();
+                TcpWithConfigFile();
                 Dispatcher.InvokeAsync(()=> { messageTextBlock.Text = "The Backlog API is running."; });
 
             });
 
         }
+
+
+        void TcpWithConfigFile()
+        {
+            host = new ServiceHost(typeof(BacklogAPI));
+            host.Open();
+        }
+
+
+
+        void Tcp()
+        {
+            var Uri = new Uri("net.tcp://localhost:8081/Backlog");
+            var MetadataUri = new Uri("http://localhost:8081/Backlog");
+            host = new ServiceHost(typeof(BacklogAPI), Uri);
+
+            var serviceBehavior = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
+            if (serviceBehavior == null)
+            {
+                serviceBehavior = new ServiceMetadataBehavior();
+                host.Description.Behaviors.Add(serviceBehavior);
+            }
+
+            serviceBehavior.HttpGetEnabled = true;
+            serviceBehavior.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+
+            host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexTcpBinding(), MetadataUri);
+
+            var binding = new NetTcpBinding(SecurityMode.None);
+            host.AddServiceEndpoint(typeof(IBackLogAPI), binding, Uri);
+        }
+
+
+
+        void MoreTcp()
+        {
+            string serviceUrl = "net.tcp://localhost:9000/TestService/";
+
+            ServiceHost serviceHost = null;
+
+            try
+
+            {
+
+                Uri uri = new Uri(serviceUrl);
+
+                serviceHost = new ServiceHost(typeof(BacklogAPI), uri);
+
+                NetTcpBinding netTcpBinding = new NetTcpBinding();
+
+                ServiceMetadataBehavior serviceMetadataBehavior = new ServiceMetadataBehavior();
+
+                serviceHost.Description.Behaviors.Add(serviceMetadataBehavior);
+
+                serviceHost.AddServiceEndpoint(typeof(IMetadataExchange),
+
+                  MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
+
+                serviceHost.AddServiceEndpoint(typeof(IBackLogAPI), netTcpBinding, serviceUrl);
+
+                serviceHost.Open();
+
+                Console.WriteLine("Service started... " + serviceUrl);
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                serviceHost = null;
+
+                Console.WriteLine("Error starting service" + ex.Message);
+
+            }
+            
+            host = serviceHost;
+        }
+
 
         void CloseService()
         {

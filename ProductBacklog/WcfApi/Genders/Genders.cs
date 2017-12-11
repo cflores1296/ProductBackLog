@@ -14,14 +14,14 @@ namespace WcfApi.Genders
             return new DataContext().DbGenders.ToList().Select(gender => new Gender(gender)).ToList();
         }
 
-        public Gender GetGender(string name)
+        public Gender FindGender(string name)
         {
             return new DataContext().DbGenders.Where(gender => gender.Name == name).ToList().Select(gender => new Gender(gender)).FirstOrDefault();
         }
 
-        public DbGender GetDbGender(DataContext dbContext, Guid dbGenderId)
+        public DbGender GetDbGender(DataContext dbContext, Guid genderId)
         {
-            return dbContext.DbGenders.FirstOrDefault(gender => gender.DbGenderId == dbGenderId);
+            return dbContext.DbGenders.FirstOrDefault(gender => gender.DbGenderId == genderId);
         }
     }
 }

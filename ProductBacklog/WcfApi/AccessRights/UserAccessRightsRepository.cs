@@ -75,7 +75,7 @@ namespace WcfApi.UserAccessRights
             dbUserAccessRight.DbAccessRight = new AccessRightsRepository().GetDbAccessRight(dbContext, userAccessRight.AccessRight.AccessRightId);
             dbUserAccessRight.DbUser = new UsersRepository().GetDbUser(dbContext, userAccessRight.User.UserId);
 
-            var addedUserAccessRight = dbContext.DbUserAccessRights.Add(dbUserAccessRight);
+            dbUserAccessRight = dbContext.DbUserAccessRights.Add(dbUserAccessRight);
             dbContext.SaveChanges();
 
             return new UserAccessRight(dbUserAccessRight);

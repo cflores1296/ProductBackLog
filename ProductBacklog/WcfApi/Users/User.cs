@@ -5,8 +5,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WcfApi.DataAccessLayer;
+using WcfApi.Genders;
 
-namespace WcfApi.DataAccessLayer
+namespace WcfApi.Users
 {
     [DataContract]
     public class User

@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using WcfApi.DataAccessLayer;
+using WcfApi.Users;
 
 namespace WcfApi.UserLogins
 {
@@ -16,6 +17,8 @@ namespace WcfApi.UserLogins
         public UserLogin(DbUserLogin dbUserLogin)
         {
             UserLoginId = dbUserLogin.DbUserLoginId;
+            PasswordHash = dbUserLogin.PasswordHash;
+            UserId = dbUserLogin.UserId;
             User = new User(dbUserLogin.DbUser);
         }
 

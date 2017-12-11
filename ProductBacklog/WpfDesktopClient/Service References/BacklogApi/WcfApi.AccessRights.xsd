@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfApi.AccessRights" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfApi.Users" />
+  <xs:complexType name="ArrayOfAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccessRight" nillable="true" type="tns:AccessRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccessRight" nillable="true" type="tns:ArrayOfAccessRight" />
+  <xs:complexType name="AccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessRightId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccessRight" nillable="true" type="tns:AccessRight" />
+  <xs:complexType name="ArrayOfRemovedAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RemovedAccessRight" nillable="true" type="tns:RemovedAccessRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemovedAccessRight" nillable="true" type="tns:ArrayOfRemovedAccessRight" />
+  <xs:complexType name="RemovedAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessRight" nillable="true" type="tns:AccessRight" />
+      <xs:element minOccurs="0" name="DateRemoved" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RemovedAccessRightId" type="ser:guid" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="RemovedByUser" nillable="true" type="q1:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemovedAccessRight" nillable="true" type="tns:RemovedAccessRight" />
+  <xs:complexType name="ArrayOfUserAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserAccessRight" nillable="true" type="tns:UserAccessRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserAccessRight" nillable="true" type="tns:ArrayOfUserAccessRight" />
+  <xs:complexType name="UserAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessRight" nillable="true" type="tns:AccessRight" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="User" nillable="true" type="q2:User" />
+      <xs:element minOccurs="0" name="UserAccessRightId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAccessRight" nillable="true" type="tns:UserAccessRight" />
+  <xs:complexType name="ArrayOfRemovedUserAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RemovedUserAccessRight" nillable="true" type="tns:RemovedUserAccessRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemovedUserAccessRight" nillable="true" type="tns:ArrayOfRemovedUserAccessRight" />
+  <xs:complexType name="RemovedUserAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateRemoved" type="xs:dateTime" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfApi.Users" minOccurs="0" name="RemovedByUser" nillable="true" type="q3:User" />
+      <xs:element minOccurs="0" name="RemovedUserAccessRightId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserAccessRight" nillable="true" type="tns:UserAccessRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemovedUserAccessRight" nillable="true" type="tns:RemovedUserAccessRight" />
+</xs:schema>

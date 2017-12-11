@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,24 +9,47 @@ using System.Threading;
 using WcfApi.AccessRights;
 using WcfApi.Customers;
 using WcfApi.DataAccessLayer;
+using WcfApi.Genders;
+using WcfApi.PushNotifications;
+using WcfApi.SoftwareTypes;
 using WcfApi.UserAccessRights;
 using WcfApi.UserLogins;
 using WcfApi.Users;
+using WcfApi.WorkRequests;
+using WcfApi.WorkStatuses;
+using WcfApi.WorkTypes;
 
 namespace WcfApi
 {
-    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
+
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true, InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false)]
     public class BacklogAPI : IBackLogAPI
     {
+        PushNotificationsRepository pushNotificationsRepository = new PushNotificationsRepository();
+
+        // Notifications
+        public void SubscribeToNotifications()
+        {
+            pushNotificationsRepository.Subscribe(OperationContext.Current);
+        }
+
+        public void UnSubscribeFromNotificaitons()
+        {
+            pushNotificationsRepository.UnSubscribe(OperationContext.Current);
+        }
+
+
+
+
         // Genders
         public List<Gender> GetAllGenders()
         {
             return new Genders.Genders().GetAllGenders();
         }
 
-        public Gender GetGender(string name)
+        public Gender FindGender(string name)
         {
-            return new Genders.Genders().GetGender(name);
+            return new Genders.Genders().FindGender(name);
         }
 
 
@@ -38,17 +62,32 @@ namespace WcfApi
         // Users
         public User AddUser(User user)
         {
-            return new UsersRepository().AddUser(user);
+            var result = new UsersRepository().AddUser(user);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.UserWasAddedNotification(result.UserId));
+
+            return result;
         }
 
         public User UpdateUser(User user)
         {
-            return new UsersRepository().UpdateUser(user);
+            var result = new UsersRepository().UpdateUser(user);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.UserWasUpdatedNotification(result.UserId));
+
+            return result;
         }
 
         public RemovedUser RemoveUser(RemovedUser removedUser)
         {
-            return new UsersRepository().RemoveUser(removedUser);
+            var result = new UsersRepository().RemoveUser(removedUser);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.UserWasRemovedNotification(result.RemovedUserId));
+
+            return result;
         }
 
         public List<User> GetAllUsers()
@@ -66,8 +105,15 @@ namespace WcfApi
             return new UsersRepository().GetAllRemovedUsers();
         }
 
+        public User GetUser(Guid userId)
+        {
+            return new UsersRepository().GetUser(userId);
+        }
 
-
+        public RemovedUser GetRemovedUser(Guid removedUserId)
+        {
+            return new UsersRepository().GetRemovedUser(removedUserId);
+        }
 
         // User Logins
 
@@ -90,7 +136,7 @@ namespace WcfApi
         {
             return new UserLoginsRepository().GetAllActiveUserLogins();
         }
-        
+
         public List<UserLogin> GetUserLogins(Guid userId)
         {
             return new UserLoginsRepository().GetUserLogins(userId);
@@ -106,6 +152,10 @@ namespace WcfApi
             return new UserLoginsRepository().GetActiveUserLogins(userId);
         }
 
+        public UserLogin GetUserLogin(Guid userLoginId)
+        {
+            return new UserLoginsRepository().GetUserLogin(userLoginId);
+        }
 
         public UserLogin AddUserLogin(UserLogin userLogin)
         {
@@ -127,6 +177,7 @@ namespace WcfApi
 
 
         // Access Rights
+
         public List<AccessRight> GetAllAccessRights()
         {
             return new AccessRightsRepository().GetAllAccessRights();
@@ -140,6 +191,12 @@ namespace WcfApi
         public List<AccessRight> GetAllActiveAccessRights()
         {
             return new AccessRightsRepository().GetAllActiveAccessRights();
+        }
+
+
+        public AccessRight GetAccessRight(Guid accessRightId)
+        {
+            return new AccessRightsRepository().GetAccessRight(accessRightId);
         }
 
 
@@ -177,7 +234,7 @@ namespace WcfApi
         {
             return new UserAccessRightsRepository().GetAllActiveUserAccessRights();
         }
-        
+
         public List<UserAccessRight> GetUserAccessRights(Guid userId)
         {
             return new UserAccessRightsRepository().GetUserAccessRights(userId);
@@ -218,17 +275,32 @@ namespace WcfApi
         // Customers
         public Customer AddCustomer(Customer customer)
         {
-            return new CustomersRepository().AddCustomer(customer);
+            var result = new CustomersRepository().AddCustomer(customer);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.CustomerWasAddedNotification(result.CustomerId));
+
+            return result;
         }
 
         public Customer UpdateCustomer(Customer customer)
         {
-            return new CustomersRepository().UpdateCustomer(customer);
+            var result = new CustomersRepository().UpdateCustomer(customer);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.CustomerWasUpdatedNotification(result.CustomerId));
+
+            return result;
         }
 
         public RemovedCustomer RemoveCustomer(RemovedCustomer removedCustomer)
         {
-            return new CustomersRepository().RemoveCustomer(removedCustomer);
+            var result = new CustomersRepository().RemoveCustomer(removedCustomer);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.CustomerWasRemovedNotification(result.RemovedCustomerId));
+
+            return result;
         }
 
         public List<Customer> GetAllCustomers()
@@ -246,5 +318,116 @@ namespace WcfApi
             return new CustomersRepository().GetAllRemovedCustomers();
         }
 
+        public Customer GetCustomer(Guid customerId)
+        {
+            return new CustomersRepository().GetCustomer(customerId);
+        }
+
+        public RemovedCustomer GetRemovedCustomer(Guid removedCustomerId)
+        {
+            return new CustomersRepository().GetRemovedCustomer(removedCustomerId);
+        }
+
+
+
+        // Work Type
+        public List<WorkType> GetAllWorkTypes()
+        {
+            return new WorkTypesRepository().GetAllWorkTypes();
+        }
+
+        public WorkType FindWorkType(string name)
+        {
+            return new WorkTypesRepository().FindWorkType(name);
+        }
+
+
+
+
+
+
+        // Work Status
+        public List<WorkStatus> GetAllWorkStatuses()
+        {
+            return new WorkStatusRepository().GetAllWorkStatuses();
+        }
+
+        public WorkStatus FindWorkStatus(string name)
+        {
+            return new WorkStatusRepository().FindWorkStatus(name);
+        }
+
+
+
+
+
+        // Software Type
+        public List<SoftwareType> GetAllSoftwareTypes()
+        {
+            return new SoftwareTypesRepository().GetAllSoftwareTypes();
+        }
+
+        public SoftwareType FindSoftwareType(string name)
+        {
+            return new SoftwareTypesRepository().FindSoftwareType(name);
+        }
+
+
+        // Work Requests
+
+        public List<WorkRequest> GetAllWorkRequests()
+        {
+            return new WorkRequestsRepository().GetAllWorkRequests();
+        }
+
+        public List<RemovedWorkRequest> GetAllRemovedWorkRequests()
+        {
+            return new WorkRequestsRepository().GetAllRemovedWorkRequests();
+        }
+
+        public List<WorkRequest> GetAllActiveWorkRequests()
+        {
+            return new WorkRequestsRepository().GetAllActiveWorkRequests();
+        }
+
+        public WorkRequest AddWorkRequest(WorkRequest workRequest)
+        {
+            var result = new WorkRequestsRepository().AddWorkRequest(workRequest);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.WorkRequestWasAddedNotification(result.WorkRequestId));
+
+            return result;
+        }
+
+        public WorkRequest UpdateWorkRequest(WorkRequest workRequest)
+        {
+            var result = new WorkRequestsRepository().UpdateWorkRequest(workRequest);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.WorkRequestWasUpdatedNotification(result.WorkRequestId));
+
+            return result;
+        }
+
+        public RemovedWorkRequest RemoveWorkRequest(RemovedWorkRequest removedWorkRequest)
+        {
+            var result = new WorkRequestsRepository().RemoveWorkRequest(removedWorkRequest);
+
+            // Push notification
+            pushNotificationsRepository.NotifyAsync(OperationContext.Current, subscriber => subscriber.WorkRequestWasRemovedNotification(result.RemovedWorkRequestId));
+
+            return result;
+        }
+
+        public RemovedWorkRequest GetRemovedWorkRequest(Guid removedWorkRequestId)
+        {
+            return new WorkRequestsRepository().GetRemovedWorkRequest(removedWorkRequestId);
+        }
+
+        public WorkRequest GetWorkRequest(Guid workRequestId)
+        {
+            return new WorkRequestsRepository().GetWorkRequest(workRequestId);
+        }
     }
 }

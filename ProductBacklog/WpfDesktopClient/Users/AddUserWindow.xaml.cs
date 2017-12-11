@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WcfApi.AccessRights;
+using WcfApi.Genders;
+using WcfApi.UserLogins;
+using WcfApi.Users;
 using WpfDesktopClient.BacklogApi;
 using WpfDesktopClient.UserAccessRights;
 
@@ -19,7 +23,7 @@ namespace WpfDesktopClient.Users
     /// <summary>
     /// Interaction logic for AddUserWindow.xaml
     /// </summary>
-    public partial class AddUserWindow : Window
+    public partial class AddUserWindow : DevExpress.Xpf.Core.ThemedWindow
     {
         public bool UserWasAdded { set; get; }
         public User User { set; get; }

@@ -35,10 +35,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Controls.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Gauges.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.NavBar.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.VS2017Light.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,6 +64,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -67,15 +85,23 @@
       <DependentUpon>CustomersControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Customers\CustomerView.cs" />
+    <Compile Include="Customers\EditCustomerWindow.xaml.cs">
+      <DependentUpon>EditCustomerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PushNotifications\BacklogNotifications.cs" />
+    <Compile Include="PushNotifications\Delegates.cs" />
     <Compile Include="Service References\BacklogApi\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="UserAccessRights\AccessRightView.cs" />
+    <Compile Include="UserAccessRights\EditAccessRightWindow.xaml.cs">
+      <DependentUpon>EditAccessRightWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserAccessRights\SelectAccessRightsControl.xaml.cs">
       <DependentUpon>SelectAccessRightsControl.xaml</DependentUpon>
     </Compile>
@@ -88,16 +114,44 @@
     <Compile Include="Users\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Users\EditUserWindow.xaml.cs">
+      <DependentUpon>EditUserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Users\GenderView.cs" />
     <Compile Include="Users\UsersControl.xaml.cs">
       <DependentUpon>UsersControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Users\UserView.cs" />
+    <Compile Include="WorkRequests\AddWorkRequestWindow.xaml.cs">
+      <DependentUpon>AddWorkRequestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRequests\EditWorkRequestWindow.xaml.cs">
+      <DependentUpon>EditWorkRequestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRequests\SelectUsersControl.xaml.cs">
+      <DependentUpon>SelectUsersControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRequests\SelectUserWindow.xaml.cs">
+      <DependentUpon>SelectUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRequests\WorkRequestCustomerView.cs" />
+    <Compile Include="WorkRequests\WorkRequestsControl.xaml.cs">
+      <DependentUpon>WorkRequestsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRequests\WorkRequestSoftwareTypeView.cs" />
+    <Compile Include="WorkRequests\WorkRequestWorkStatusView.cs" />
+    <Compile Include="WorkRequests\WorkRequestUserView.cs" />
+    <Compile Include="WorkRequests\WorkRequestView.cs" />
+    <Compile Include="WorkRequests\WorkRequestWorkTypeView.cs" />
     <Page Include="Customers\AddCustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Customers\CustomersControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customers\EditCustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,6 +171,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserAccessRights\EditAccessRightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserAccessRights\SelectAccessRightsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,7 +191,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Users\EditUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Users\UsersControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkRequests\AddWorkRequestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkRequests\EditWorkRequestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkRequests\SelectUsersControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkRequests\SelectUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkRequests\WorkRequestsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,66 +234,65 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\WcfApi.AccessRights.AccessRight.datasource" />
+    <None Include="Properties\DataSources\WcfApi.AccessRights.RemovedAccessRight.datasource" />
+    <None Include="Properties\DataSources\WcfApi.AccessRights.RemovedUserAccessRight.datasource" />
+    <None Include="Properties\DataSources\WcfApi.AccessRights.UserAccessRight.datasource" />
+    <None Include="Properties\DataSources\WcfApi.Customers.Customer.datasource" />
+    <None Include="Properties\DataSources\WcfApi.Customers.RemovedCustomer.datasource" />
+    <None Include="Properties\DataSources\WcfApi.Genders.Gender.datasource" />
+    <None Include="Properties\DataSources\WcfApi.SoftwareTypes.SoftwareType.datasource" />
+    <None Include="Properties\DataSources\WcfApi.UserLogins.RemovedUserLogin.datasource" />
+    <None Include="Properties\DataSources\WcfApi.UserLogins.UserLogin.datasource" />
+    <None Include="Properties\DataSources\WcfApi.Users.RemovedUser.datasource" />
+    <None Include="Properties\DataSources\WcfApi.Users.User.datasource" />
+    <None Include="Properties\DataSources\WcfApi.WorkRequests.RemovedWorkRequest.datasource" />
+    <None Include="Properties\DataSources\WcfApi.WorkRequests.WorkRequest.datasource" />
+    <None Include="Properties\DataSources\WcfApi.WorkStatuses.WorkStatus.datasource" />
+    <None Include="Properties\DataSources\WcfApi.WorkTypes.WorkType.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\BacklogApi\Backlog.xsd">
+    <None Include="Service References\BacklogApi\service.wsdl" />
+    <None Include="Service References\BacklogApi\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\Backlog1.xsd">
+    <None Include="Service References\BacklogApi\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\Backlog2.xsd">
+    <None Include="Service References\BacklogApi\WcfApi.AccessRights.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\Backlog3.xsd">
+    <None Include="Service References\BacklogApi\WcfApi.Customers.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\Backlog31.xsd">
+    <None Include="Service References\BacklogApi\WcfApi.Genders.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\Backlog4.xsd">
+    <None Include="Service References\BacklogApi\WcfApi.SoftwareTypes.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\BacklogAPI.wsdl" />
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.AccessRight.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\BacklogApi\WcfApi.UserLogins.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.Customer.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\BacklogApi\WcfApi.Users.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.Gender.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\BacklogApi\WcfApi.WorkRequests.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedAccessRight.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\BacklogApi\WcfApi.WorkStatuses.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedCustomer.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedUser.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedUserAccessRight.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.RemovedUserLogin.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.UserAccessRight.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BacklogApi\WpfDesktopClient.BacklogApi.UserLogin.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\BacklogApi\WcfApi.WorkTypes.xsd">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +305,6 @@
     <WCFMetadataStorage Include="Service References\BacklogApi\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BacklogApi\Backlog.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\BacklogApi\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +315,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WcfApi\WcfApi.csproj">
+      <Project>{33197A9B-4F12-4837-BBF0-1D08C1DA4F56}</Project>
+      <Name>WcfApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

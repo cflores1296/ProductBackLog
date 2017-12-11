@@ -13,5 +13,7 @@ namespace WcfApi.DataAccessLayer
         public string Name { set; get; }
 
         public virtual DbRemovedCustomer DbRemovedCustomer { set; get; }
+
+        public virtual ICollection<DbWorkRequest> DbWorkRequests { set; get; }
     }
 }

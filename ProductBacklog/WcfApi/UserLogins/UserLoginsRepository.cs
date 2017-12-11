@@ -74,6 +74,20 @@ namespace WcfApi.UserLogins
                 .ToList();
         }
 
+        public UserLogin GetUserLogin(Guid userLoginId)
+        {
+            UserLogin userLogin = null;
+
+            var dbUserLogin = GetDbUserLogin(new DataContext(), userLoginId);
+
+            if (dbUserLogin != null)
+            {
+                userLogin = new UserLogin(dbUserLogin);
+            }
+
+            return userLogin;
+        }
+
 
         public UserLogin AddUserLogin(UserLogin userLogin)
         {
@@ -84,7 +98,7 @@ namespace WcfApi.UserLogins
             dbUserLogin.PasswordHash = userLogin.PasswordHash;
             dbUserLogin.DbUser = new UsersRepository().GetDbUser(dbContext, userLogin.User.UserId);
 
-            var addedUserLogin = dbContext.DbUserLogins.Add(dbUserLogin);
+            dbUserLogin = dbContext.DbUserLogins.Add(dbUserLogin);
             dbContext.SaveChanges();
 
             return new UserLogin(dbUserLogin);

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WcfApi.AccessRights;
 using WpfDesktopClient.BacklogApi;
 
 namespace WpfDesktopClient.UserAccessRights
@@ -18,7 +19,7 @@ namespace WpfDesktopClient.UserAccessRights
     /// <summary>
     /// Interaction logic for SelectAccessRightWindow.xaml
     /// </summary>
-    public partial class SelectAccessRightWindow : Window
+    public partial class SelectAccessRightWindow : DevExpress.Xpf.Core.ThemedWindow
     {
         public List<AccessRight> SelectedAccessRights { set; get; }
 
@@ -94,6 +95,19 @@ namespace WpfDesktopClient.UserAccessRights
             {
                 var accessRightView = dataGrid.SelectedItem as AccessRightView;
 
+                if (accessRightView != null)
+                {
+                    var accessRight = accessRightView.accessRight;
+
+                    var editAccessRightWindow = new EditAccessRightWindow(accessRight);
+                    editAccessRightWindow.Owner = this;
+                    editAccessRightWindow.ShowDialog();
+
+                    if (editAccessRightWindow.AccessRightWasUpdated)
+                    {
+                        RefreshUsersList();
+                    }
+                }
             }
         }
 

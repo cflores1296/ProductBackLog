@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WcfApi.Customers;
 using WpfDesktopClient.BacklogApi;
 
 namespace WpfDesktopClient.Customers
@@ -18,7 +19,7 @@ namespace WpfDesktopClient.Customers
     /// <summary>
     /// Interaction logic for AddCustomerWindow.xaml
     /// </summary>
-    public partial class AddCustomerWindow : Window
+    public partial class AddCustomerWindow : DevExpress.Xpf.Core.ThemedWindow
     {
         public bool CustomerWasAdded { set; get; }
         public Customer Customer { set; get; }

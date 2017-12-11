@@ -7,20 +7,38 @@ using System.Text;
 using WcfApi.AccessRights;
 using WcfApi.Customers;
 using WcfApi.DataAccessLayer;
+using WcfApi.Genders;
+using WcfApi.SoftwareTypes;
 using WcfApi.UserLogins;
 using WcfApi.Users;
+using WcfApi.WorkRequests;
+using WcfApi.WorkStatuses;
+using WcfApi.WorkTypes;
 
 namespace WcfApi
 {
-    [ServiceContract]
+    [ServiceContract (CallbackContract = typeof(IBacklogApiPushNotifications))]
     public interface IBackLogAPI
     {
+
+
+        // Push Notifications
+        [OperationContract(IsOneWay = true)]
+        void SubscribeToNotifications();
+
+        [OperationContract(IsOneWay = true)]
+        void UnSubscribeFromNotificaitons();
+
+
+
+
+
         // Genders
         [OperationContract]
         List<Gender> GetAllGenders();
 
         [OperationContract]
-        Gender GetGender(string name);
+        Gender FindGender(string name);
 
 
 
@@ -44,7 +62,11 @@ namespace WcfApi
         [OperationContract]
         List<RemovedUser> GetAllRemovedUsers();
 
+        [OperationContract]
+        User GetUser(Guid userId);
 
+        [OperationContract]
+        RemovedUser GetRemovedUser(Guid removedUserId);
 
 
 
@@ -74,6 +96,9 @@ namespace WcfApi
         List<UserLogin> GetActiveUserLogins(Guid userId);
 
         [OperationContract]
+        UserLogin GetUserLogin(Guid userLoginId);
+
+        [OperationContract]
         UserLogin AddUserLogin(UserLogin userLogin);
 
         [OperationContract]
@@ -95,6 +120,9 @@ namespace WcfApi
 
         [OperationContract]
         List<AccessRight> GetAllActiveAccessRights();
+
+        [OperationContract]
+        AccessRight GetAccessRight(Guid accessRightId);
 
         [OperationContract]
         AccessRight AddAccessRight(AccessRight accessRight);
@@ -160,6 +188,70 @@ namespace WcfApi
         [OperationContract]
         List<RemovedCustomer> GetAllRemovedCustomers();
 
+        [OperationContract]
+        Customer GetCustomer(Guid customerId);
+
+        [OperationContract]
+        RemovedCustomer GetRemovedCustomer(Guid removedCustomerId);
+
+
+
+        // Work Type
+        [OperationContract]
+        List<WorkType> GetAllWorkTypes();
+
+        [OperationContract]
+        WorkType FindWorkType(string name);
+
+
+
+
+        // Work Status
+        [OperationContract]
+        List<WorkStatus> GetAllWorkStatuses();
+
+        [OperationContract]
+        WorkStatus FindWorkStatus(string name);
+
+
+
+
+
+        // Software Type
+        [OperationContract]
+        List<SoftwareType> GetAllSoftwareTypes();
+
+        [OperationContract]
+        SoftwareType FindSoftwareType(string name);
+
+
+
+
+
+        // Work Requests
+        [OperationContract]
+        List<WorkRequest> GetAllWorkRequests();
+
+        [OperationContract]
+        List<RemovedWorkRequest> GetAllRemovedWorkRequests();
+
+        [OperationContract]
+        List<WorkRequest> GetAllActiveWorkRequests();
+
+        [OperationContract]
+        WorkRequest AddWorkRequest(WorkRequest workRequest);
+
+        [OperationContract]
+        WorkRequest UpdateWorkRequest(WorkRequest workRequest);
+
+        [OperationContract]
+        RemovedWorkRequest RemoveWorkRequest(RemovedWorkRequest removedWorkRequest);
+
+        [OperationContract]
+        WorkRequest GetWorkRequest(Guid workRequestId);
+
+        [OperationContract]
+        RemovedWorkRequest GetRemovedWorkRequest(Guid removedWorkRequestId);
     }
 
 

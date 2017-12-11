@@ -24,6 +24,21 @@ namespace WcfApi.Users
         {
             return new DataContext().DbUsers.Where(user => user.DbRemovedUser == null).ToList().Select(user => new User(user)).ToList();
         }
+
+        public User GetUser(Guid userId)
+        {
+            User user = null;
+
+            var dbUser = GetDbUser(new DataContext(), userId);
+
+            if (dbUser != null)
+            {
+                user = new User(dbUser);
+            }
+
+            return user;
+        }
+
         public User AddUser(User user)
         {
             var dbContext = new DataContext();
@@ -33,7 +48,7 @@ namespace WcfApi.Users
             dbUser.FirstName = user.FirstName;
             dbUser.LastName = user.LastName;
 
-            var addedUser = dbContext.DbUsers.Add(dbUser);
+            dbUser = dbContext.DbUsers.Add(dbUser);
             dbContext.SaveChanges();
 
             return new User(dbUser);
@@ -75,6 +90,19 @@ namespace WcfApi.Users
 
        
             return new RemovedUser(dbRemovedUserFound);
+        }
+
+        public RemovedUser GetRemovedUser(Guid removedUserId)
+        {
+            RemovedUser removedUser = null;
+            var dbRemovedUserFound = new DataContext().DbRemovedUsers.FirstOrDefault(dbRemovedUser => dbRemovedUser.DbRemovedUserId == removedUserId);
+
+            if (dbRemovedUserFound != null)
+            {
+                removedUser = new RemovedUser(dbRemovedUserFound);
+            }
+
+            return removedUser;
         }
 
 
